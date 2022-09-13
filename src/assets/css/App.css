@@ -993,7 +993,8 @@ form h6 {
 	right: 0;
 	width: 20px;
 	height: 50px;
-	background: url("../public/pictures/Icon\ ionic-ios-arrow-down.svg");
+	/* background: url("assets/pictures/Icon\ ionic-ios-arrow-down.svg"); */
+	background: url("assets/pictures/Icon ionic-ios-arrow-down.svg");
 	/* background: url("/picture/Icon\ ionic-ios-arrow-down.svg"); */
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -1730,7 +1731,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/name.svg") center / contain no-repeat;
+	background: url("assets/pictures/name.svg") center / contain no-repeat;
 	/* background: url("/picture/name.svg") center / contain no-repeat; */
 	background-size: 18px;
 }
@@ -1740,7 +1741,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/phone.svg") center / contain no-repeat;
+	background: url("assets/pictures/phone.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1750,7 +1751,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/message.svg") center / contain no-repeat;
+	background: url("assets/pictures/message.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1760,7 +1761,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/awesome-map.svg") center / contain no-repeat;
+	background: url("assets/pictures/awesome-map.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1770,7 +1771,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/map-postal.svg") center / contain no-repeat;
+	background: url("assets/pictures/map-postal.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1780,7 +1781,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/map-city-hall.svg") center / contain no-repeat;
+	background: url("assets/pictures/map-city-hall.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1790,7 +1791,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/awesome-gender.svg") center / contain no-repeat;
+	background: url("assets/pictures/awesome-gender.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
@@ -1800,7 +1801,7 @@ input[type=number] {
 	padding: 35px 0px 15px 20px;
 	color: black;
 	min-width: 80px;
-	background: url("../public/pictures/awesome-address-book.svg") center / contain no-repeat;
+	background: url("assets/pictures/awesome-address-book.svg") center / contain no-repeat;
 	background-size: 18px;
 
 }
