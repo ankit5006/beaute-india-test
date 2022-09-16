@@ -1,3 +1,4 @@
+import Page404 from "pages/404"
 import Cart from "pages/Cart"
 import Checkout from "pages/Checkout"
 import Home from "pages/Home"
@@ -7,6 +8,7 @@ import Products from "pages/Products"
 import Signup from "pages/Signup"
 
 const routes = [
+    { path: "*", component: Page404 },
     { path: '/', component: Home },
     { path: "/products", component: Products },
     { path: "/productsdetail", component: Productdetails },

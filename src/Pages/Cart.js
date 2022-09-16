@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { Link } from "react-router-dom";
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 class Cart extends Component {
   render() {
@@ -35,8 +35,8 @@ class Cart extends Component {
 
                           </div>
                         </div>
-                        <div className='delete-img mt-4'>        
-                        <img src={process.env.PUBLIC_URL + "pictures/delete.png"}  alt="" />
+                        <div className='delete-img mt-4'>
+                          <img src={process.env.PUBLIC_URL + "pictures/delete.png"} alt="" />
                         </div>
                       </div>
                     </div>
@@ -59,8 +59,8 @@ class Cart extends Component {
 
                           </div>
                         </div>
-                        <div className='delete-img mt-4'>        
-                        <img src={process.env.PUBLIC_URL + "pictures/delete.png"}  alt="" />
+                        <div className='delete-img mt-4'>
+                          <img src={process.env.PUBLIC_URL + "pictures/delete.png"} alt="" />
                         </div>
                       </div>
                     </div>
