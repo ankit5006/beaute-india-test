@@ -1,14 +1,21 @@
 import useSWR from "swr"
 import fetcher from "./fetcher"
 
-const useQuery = (url) => {
-    const { data, error } = useSWR(url, fetcher)
+const useQuery = (url, id) => {
+    const fullUrl = id ? `${url}/${id}` : url
+    const { data, error } = useSWR(fullUrl, fetcher)
 
-    return {
-        data: data?.data || [],
+    const response = {
         isLoading: !data && !error,
         isError: error
     }
+
+    if (id) {
+        Object.assign(response, { data: data?.data })
+    } else {
+        Object.assign(response, { data: data?.data || [] })
+    }
+    return response
 }
 
 export default useQuery
