@@ -2,7 +2,6 @@ import { Button, Input, Select } from "components/forms";
 import { Field, FormikProvider, useFormik } from "formik";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { login } from "store/auth/actions";
 import { useQuery } from "utilities";
 import API_ENDPOINTS from "utilities/apiEndpoints";
@@ -11,10 +10,7 @@ import validationSchema from "./validationSchema";
 
 const LoginForm = () => {
     const { data, isLoading } = useQuery(API_ENDPOINTS.SHOPS)
-    const navigate = useNavigate()
     const dispatch = useDispatch()
-
-
 
     const companies = [
         { label: 'Select your company', value: null },
@@ -32,7 +28,7 @@ const LoginForm = () => {
                 .then(response => {
                     if (response?.success) {
                         notification('success', response?.message)
-                        navigate('/products')
+                        window.location.href = "/products"
                     }
                 })
 

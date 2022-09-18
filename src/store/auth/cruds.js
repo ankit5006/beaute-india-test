@@ -21,8 +21,8 @@ export const register = (url, payload) => {
 }
 
 export const logout = (url, config) => {
-    axiosApi.defaults.headers.common["Authorization"] = config.headers.Authorization;
-    return axiosApi.post(url);
+    // axiosApi.defaults.headers.common["Authorization"] = config.headers.Authorization;
+    return axiosApi.get(url);
 }
 
 export const getUser = (url, config) => {

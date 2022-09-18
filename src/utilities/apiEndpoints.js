@@ -1,5 +1,6 @@
 const API_ENDPOINTS = {
     LOGIN: 'login',
+    LOGOUT: 'logout',
     REGISTER: 'signup',
     PRODUCT_LIST: 'product_list',
     PRODUCT_LIST_BY_ID: 'product_by_id',

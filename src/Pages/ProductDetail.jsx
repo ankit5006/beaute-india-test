@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import ractangleImage from 'assets/pictures/Rectangle 633.png';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { Fragment, useEffect, useState } from "react";
@@ -12,7 +13,9 @@ const ProductDetail = () => {
 	useEffect(() => {
 		request.post(API_ENDPOINTS.PRODUCT_LIST_BY_ID, { id })
 			.then(response => {
-				console.log('response', response)
+				if (response?.data) {
+					setProduct(response?.data)
+				}
 			})
 	}, [])
 
@@ -27,20 +30,20 @@ const ProductDetail = () => {
 						<div className="row ">
 							<div className="col-lg-5 ">
 								<div className="main-product">
-									<img src={process.env.PUBLIC_URL + "pictures/Rectangle 87.png"} alt="" />
+									<img src={ractangleImage} alt="" />
 
 
 								</div>
 								<div className="more-product text-center mt-3">
-									<img src={process.env.PUBLIC_URL + "pictures/Rectangle 633.png"} alt="" />
-									<img src={process.env.PUBLIC_URL + "pictures/Rectangle 633.png"} alt="" />
-									<img src={process.env.PUBLIC_URL + "pictures/Rectangle 633.png"} alt="" />
+									<img src={ractangleImage} alt="" />
+									<img src={ractangleImage} alt="" />
+									<img src={ractangleImage} alt="" />
 
 								</div>
 							</div>
 							<div className="col-lg-7">
 								<div className="product-details">
-									<h3>Playboy Endless Night</h3>
+									<h3>{product?.name}</h3>
 									<p className=" pt-3 pe-5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
 									<h4 className="pb-4 pt-4">RS. 849</h4>
 									<div className="qunt-main">
@@ -56,7 +59,7 @@ const ProductDetail = () => {
 									</div>
 									<div className="add-to-cart-whishlist mt-5">
 										<Link to="/cart" className="btn-1">Add to cart</Link>
-										<button classNameName="btn-2">
+										<button className="btn-2">
 											<img src={process.env.PUBLIC_URL + "pictures/noun-love-4726271.svg"} alt="" />
 										</button>
 									</div>
