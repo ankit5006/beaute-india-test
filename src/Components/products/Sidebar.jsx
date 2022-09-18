@@ -1,35 +1,49 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import downArrow from 'assets/pictures/arrow-down.svg'
 import cancelImg from 'assets/pictures/Cancel-icon.png'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { API_ENDPOINTS, useQuery } from 'utilities'
 
 const Sidebar = () => {
+    const { data: categories } = useQuery(API_ENDPOINTS.CATEGORIES)
+    let [searchParams] = useSearchParams();
+    const navigate = useNavigate()
+
+    const handleNavigate = (e, key, value) => {
+        const Obj = {}
+        for (const [key, value] of searchParams) {
+            Object.assign(Obj, { [key]: value })
+        }
+        Object.assign(Obj, { [key]: value })
+        const query = new URLSearchParams(Obj).toString()
+        navigate(`/products?${query}`);
+    }
+
     return (
         <div className="scroll-div-side">
             <div className="category-filter ">
                 <span onClick="openside()">
-                    <img src={cancelImg} alt="" /></span>
+                    <img src={cancelImg} alt="" />
+                </span>
+
                 <ul className="nav flex-column">
                     <li>
                         <a ><img src={downArrow} alt="" />&nbsp;
                             <u className="cathead">Catogories</u></a>
                     </li>
-                    <li className='mt-3 ps-3 cat-filt'>
-                        <a href="#">Fragnance</a>
-                    </li>
-                    <li className='mt-3 ps-3 cat-filt'>
-                        <a href="#">Skin Care & Beauty</a>
-                    </li>
-                    <li className='mt-3 ps-3 cat-filt'>
-                        <a href="#">Accessories</a>
-                    </li>
-                    <li className='mt-3 ps-3 cat-filt'>
-                        <a href="#">Home Fragrance </a>
-                    </li>
-                    <li className='mt-3 ps-3 cat-filt' >
-                        <a href="#">Apparels </a>
-                    </li>
+
+                    {categories.map((category, idx) => (
+                        <li className='mt-3 ps-3 cat-filt'>
+                            <a onClick={(e) => handleNavigate(e, 'category', category?.id)}>
+                                {category?.name}
+                            </a>
+                        </li>
+                    ))}
+
                 </ul>
             </div>
+
+
             <div className="brands-filter">
                 <ul className="nav flex-column">
                     <li className='mb-3' >
@@ -39,11 +53,11 @@ const Sidebar = () => {
                     <div className="scroll-div">
                         <ul className="list-group">
                             <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
+                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." onClick={(e) => handleNavigate(e, 'brand', '4515')} />
                                 4711
                             </li>
                             <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
+                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." onClick={(e) => handleNavigate(e, 'brand', 'Alyssa')} />
                                 Alyssa
                             </li>
                             <li className="list-group-item">

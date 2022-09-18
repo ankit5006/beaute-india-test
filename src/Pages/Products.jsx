@@ -1,12 +1,37 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import { ProductCard, Sidebar, Slider } from 'components/products';
-import { Fragment } from "react";
-import { API_ENDPOINTS, useQuery } from 'utilities';
-
+import { ProductCard, ProductQuery, Sidebar, Slider } from 'components/products';
+import { Fragment } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const Products = () => {
-	const { data } = useQuery(API_ENDPOINTS.PRODUCT_LIST)
+	const [searchParams] = useSearchParams();
+	const category_id = searchParams.get("category")
+	// const [data, setData] = useState([])
+
+	const { data } = ProductQuery()
+
+	// useEffect(() => {
+	// 	if (typeof category_id === 'undefined') {
+	// 		setData(products)
+	// 	}
+	// }, [products])
+
+
+	// useEffect(() => {
+	// 	if (category_id) {
+	// 		request.post(API_ENDPOINTS.PRODUCT_LIST_BY_CATEGORY_ID, { id: category_id })
+	// 			.then(response => {
+	// 				console.log(response);
+	// 				setData(response?.data || [])
+	// 			})
+	// 	}
+
+	// }, [category_id])
+
+
+
 
 	return (
 		<Fragment>

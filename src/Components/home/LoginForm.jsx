@@ -1,16 +1,20 @@
 import { Button, Input, Select } from "components/forms";
 import { Field, FormikProvider, useFormik } from "formik";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { request, useQuery } from "utilities";
+import { login } from "store/auth/actions";
+import { useQuery } from "utilities";
 import API_ENDPOINTS from "utilities/apiEndpoints";
 import notification from "utilities/notification";
 import validationSchema from "./validationSchema";
 
 const LoginForm = () => {
-    const [loading, setLoading] = useState(false)
     const { data, isLoading } = useQuery(API_ENDPOINTS.SHOPS)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+
 
     const companies = [
         { label: 'Select your company', value: null },
@@ -24,15 +28,14 @@ const LoginForm = () => {
         },
         validationSchema,
         onSubmit: (values) => {
-            setLoading(true)
-            request.post(API_ENDPOINTS.LOGIN, values)
+            dispatch(login(API_ENDPOINTS.LOGIN, values))
                 .then(response => {
-                    setLoading(false)
                     if (response?.success) {
                         notification('success', response?.message)
                         navigate('/products')
                     }
                 })
+
         }
     })
 
@@ -57,11 +60,7 @@ const LoginForm = () => {
                         component={Input}
                     />
 
-                    {/* <button type="submit" className="loginbtn">
-                        Log in
-                    </button> */}
-
-                    <Button type="submit" className="loginbtn" label="Log in" isLoading={loading} />
+                    <Button type="submit" className="loginbtn" label="Log in" />
 
                 </form>
             </FormikProvider>
