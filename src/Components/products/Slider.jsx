@@ -1,7 +1,10 @@
-import banner from 'assets/pictures/banner.png'
-
+import banner from 'assets/pictures/banner.png';
+import { Fragment } from 'react';
+import { API_ENDPOINTS, useQuery } from 'utilities';
 
 const Slider = () => {
+    const { data } = useQuery(API_ENDPOINTS.SLIDER_IMAGES)
+
     return (
         <div
             id="carouselExampleIndicators"
@@ -9,15 +12,13 @@ const Slider = () => {
             data-bs-ride="carousel"
         >
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img src={banner} className="d-block w-100" alt="..." />
-                </div>
-                <div className="carousel-item">
-                    <img src={banner} className="d-block w-100" alt="..." />
-                </div>
-                <div className="carousel-item">
-                    <img src={banner} className="d-block w-100" alt="..." />
-                </div>
+                {data.map((item, idx) => (
+                    <Fragment key={idx}>
+                        <div className={`carousel-item ${idx === 0} ? 'active' : '`}>
+                            <img src={item.image || banner} className="d-block w-100" alt="..." />
+                        </div>
+                    </Fragment>
+                ))}
             </div>
             <button
                 className="carousel-control-prev"

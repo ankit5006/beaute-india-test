@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import nounLove from "assets/pictures/noun-love-4726271.svg";
 import ractangleImage from 'assets/pictures/Rectangle 633.png';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
@@ -9,6 +10,7 @@ import { API_ENDPOINTS, request } from "utilities";
 const ProductDetail = () => {
 	const { id } = useParams()
 	const [product, setProduct] = useState(null)
+
 
 	useEffect(() => {
 		request.post(API_ENDPOINTS.PRODUCT_LIST_BY_ID, { id })
@@ -30,7 +32,7 @@ const ProductDetail = () => {
 						<div className="row ">
 							<div className="col-lg-5 ">
 								<div className="main-product">
-									<img src={ractangleImage} alt="" />
+									<img src={product?.image || ractangleImage} alt="" />
 
 
 								</div>
@@ -44,8 +46,10 @@ const ProductDetail = () => {
 							<div className="col-lg-7">
 								<div className="product-details">
 									<h3>{product?.name}</h3>
-									<p className=" pt-3 pe-5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
-									<h4 className="pb-4 pt-4">RS. 849</h4>
+									<div className=" pt-3 pe-5" dangerouslySetInnerHTML={{ __html: product?.short_description }} />
+
+
+									<h4 className="pb-4 pt-4">RS. {product?.normal_price}</h4>
 									<div className="qunt-main">
 										<div className="quantity">
 											<h5>Quantity</h5>
@@ -57,10 +61,11 @@ const ProductDetail = () => {
 
 										</div>
 									</div>
+
 									<div className="add-to-cart-whishlist mt-5">
-										<Link to="/cart" className="btn-1">Add to cart</Link>
+										<button className="btn-1">Add to cart</button>
 										<button className="btn-2">
-											<img src={process.env.PUBLIC_URL + "pictures/noun-love-4726271.svg"} alt="" />
+											<img src={nounLove} alt="" />
 										</button>
 									</div>
 									<div className="buy-now-btn mt-4">
@@ -97,18 +102,11 @@ const ProductDetail = () => {
 						<div className="tab-pane fade show active " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 							<div className="container mt-4 mb-4">
 								<div className="row">
-
-									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-									et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-									Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-									amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-									aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-									gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-									sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-
+									<div dangerouslySetInnerHTML={{ __html: product?.long_description }} />
 								</div>
 							</div>
 						</div>
+
 						<div className="tab-pane fade " id="nav-luxury" role="tabpanel" aria-labelledby="nav-luxury-tab">
 							<div className="container mt-4 mb-4">
 								<div className="row">
@@ -122,6 +120,7 @@ const ProductDetail = () => {
 								</div>
 							</div>
 						</div>
+
 						<div className="tab-pane fade" id="nav-prestige" role="tabpanel" aria-labelledby="nav-prestige-tab">
 							<div className="container mt-4 mb-4">
 								<div className="row">
@@ -136,6 +135,7 @@ const ProductDetail = () => {
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</section>
 			</div>

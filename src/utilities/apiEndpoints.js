@@ -7,5 +7,6 @@ const API_ENDPOINTS = {
     PRODUCT_LIST_BY_CATEGORY_ID: 'fetch_product_by_category_id',
     SHOPS: 'shop_list',
     CATEGORIES: 'category',
+    SLIDER_IMAGES: 'sliderimages',
 }
 export default API_ENDPOINTS
