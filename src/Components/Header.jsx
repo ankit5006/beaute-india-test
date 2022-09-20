@@ -1,3 +1,7 @@
+import cart from 'assets/pictures/cart.svg';
+import logo from 'assets/pictures/header-logo.png';
+import search from 'assets/pictures/search.svg';
+import whishlist from 'assets/pictures/whishlist.svg';
 import { Fragment } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +22,9 @@ function Header() {
 		<Fragment>
 			<div className="navhead">
 				<div className="logoo">
-					<Link to="/"><img src={process.env.PUBLIC_URL + "pictures/header-logo.png"} alt="" /></Link>
+					<Link to="/">
+						<img src={logo} alt="" />
+					</Link>
 				</div>
 				<ul className="navhead-links" id="myDIV">
 					<li>
@@ -28,7 +34,7 @@ function Header() {
 									<div className="search_box">
 										<input type="text" className="input-search" placeholder="SEARCH" />
 										<div className="btn btn_common"><Link to="">
-											<img src={process.env.PUBLIC_URL + "pictures/search.svg"} className="search-img" alt="" />
+											<img src={search} className="search-img" alt="" />
 										</Link>
 										</div>
 									</div>
@@ -39,13 +45,13 @@ function Header() {
 					<li>
 
 						<Link to="/productdetail">
-							<img src={process.env.PUBLIC_URL + "pictures/whishlist.svg"} className="heart-img" alt="" />
+							<img src={whishlist} className="heart-img" alt="" />
 						</Link>
 
 					</li>
 					<li>
 						<Link to="/cart">
-							<img src={process.env.PUBLIC_URL + "pictures/cart.svg"} className="cart-img" alt="" />
+							<img src={cart} className="cart-img" alt="" />
 						</Link>
 					</li>
 					<li>
