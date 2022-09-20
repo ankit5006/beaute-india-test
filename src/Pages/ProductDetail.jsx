@@ -1,27 +1,36 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import nounLove from "assets/pictures/noun-love-4726271.svg";
 import ractangleImage from 'assets/pictures/Rectangle 633.png';
+import QuantityUpdate from "components/cart/QuantityUpdate";
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { API_ENDPOINTS, request } from "utilities";
+import { add } from "store/cart/actions";
+import { API_ENDPOINTS, useQuery } from "utilities";
+import notification from "utilities/notification";
 
 const ProductDetail = () => {
 	const { id } = useParams()
-	const [product, setProduct] = useState(null)
+	const dispatch = useDispatch()
+	const { data: product } = useQuery(`${API_ENDPOINTS.PRODUCT_LIST_BY_ID}/${id}`)
+	const { data: carts } = useSelector(state => state.cart)
+	const currentItem = carts.find(item => item?.id === product?.id)
 
-
-	useEffect(() => {
-		request.post(API_ENDPOINTS.PRODUCT_LIST_BY_ID, { id })
-			.then(response => {
-				if (response?.data) {
-					setProduct(response?.data)
-				}
-			})
-	}, [])
-
-
+	const addToCart = () => {
+		const data = {
+			id: product?.id || 0,
+			product_id: product?.id || 0,
+			name: product?.name || '',
+			price: Number(product?.sale_price) > 0 ? Number(product?.sale_price) : Number(product?.normal_price),
+			quantity: 1,
+			// attributes: values.attributes,
+			model: product || {}
+		}
+		dispatch(add(data))
+		notification('success', 'Product Added To Cart');
+	}
 
 	return (
 		<Fragment>
@@ -36,34 +45,49 @@ const ProductDetail = () => {
 
 
 								</div>
-								<div className="more-product text-center mt-3">
+								{/* <div className="more-product text-center mt-3">
 									<img src={ractangleImage} alt="" />
 									<img src={ractangleImage} alt="" />
 									<img src={ractangleImage} alt="" />
-
-								</div>
+								</div> */}
 							</div>
 							<div className="col-lg-7">
 								<div className="product-details">
 									<h3>{product?.name}</h3>
-									<div className=" pt-3 pe-5" dangerouslySetInnerHTML={{ __html: product?.short_description }} />
+									<div className=" pt-3 pe-5 mb-3" dangerouslySetInnerHTML={{ __html: product?.short_description }} />
 
+									{
+										product?.sale_price > 0 ? (
+											<Fragment>
+												<del>
+													<h5>RS. {product?.normal_price}</h5>
+												</del>
+												<h4 className="mb-3">RS. {product?.sale_price}</h4>
+											</Fragment>
+										) : (
 
-									<h4 className="pb-4 pt-4">RS. {product?.normal_price}</h4>
-									<div className="qunt-main">
-										<div className="quantity">
-											<h5>Quantity</h5>
-											<div className="wrapper">
-												<span className="minus">-</span>
-												<span className="num">01</span>
-												<span className="plus">+</span>
+											<h4 className="pb-4 pt-4">RS. {product?.normal_price}</h4>
+										)
+									}
+									{
+										currentItem && (
+											<div className="qunt-main">
+												<div className="quantity">
+													<h5>Quantity</h5>
+													<QuantityUpdate
+														quantity={Number(currentItem?.quantity)}
+														id={currentItem?.id}
+													/>
+
+												</div>
 											</div>
+										)
+									}
 
-										</div>
-									</div>
+
 
 									<div className="add-to-cart-whishlist mt-5">
-										<button className="btn-1">Add to cart</button>
+										<button className="btn-1" onClick={addToCart} disabled={!product}>Add to cart</button>
 										<button className="btn-2">
 											<img src={nounLove} alt="" />
 										</button>
