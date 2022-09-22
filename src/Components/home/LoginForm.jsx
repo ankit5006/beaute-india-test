@@ -2,11 +2,10 @@ import { Button, Input, Select } from "components/forms";
 import { Field, FormikProvider, useFormik } from "formik";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "store/auth/actions";
+import { save } from "store/shop/actions";
 import { useQuery } from "utilities";
 import API_ENDPOINTS from "utilities/apiEndpoints";
 import notification from "utilities/notification";
-import validationSchema from "./validationSchema";
 
 const LoginForm = () => {
     const { data, isLoading } = useQuery(API_ENDPOINTS.SHOPS)
@@ -22,9 +21,8 @@ const LoginForm = () => {
             shop_id: '',
             password: ''
         },
-        validationSchema,
         onSubmit: (values) => {
-            dispatch(login(API_ENDPOINTS.LOGIN, values))
+            dispatch(save(API_ENDPOINTS.SHOP_LOGIN, values))
                 .then(response => {
                     if (response?.success) {
                         notification('success', response?.message)

@@ -4,17 +4,17 @@ import ractangleImage from 'assets/pictures/Rectangle 633.png';
 import QuantityUpdate from "components/cart/QuantityUpdate";
 import Footer from 'components/Footer';
 import Header from 'components/Header';
+import { ProductQuery } from "components/products";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { add } from "store/cart/actions";
-import { API_ENDPOINTS, useQuery } from "utilities";
 import notification from "utilities/notification";
 
 const ProductDetail = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
-	const { data: product } = useQuery(`${API_ENDPOINTS.PRODUCT_LIST_BY_ID}/${id}`)
+	const { data: product } = ProductQuery(id)
 	const { data: carts } = useSelector(state => state.cart)
 	const currentItem = carts.find(item => item?.id === product?.id)
 

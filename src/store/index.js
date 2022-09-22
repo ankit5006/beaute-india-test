@@ -16,7 +16,7 @@ const persistConfig = {
 	key: 'root',
 	storage,
 	transforms: [transformed],
-	whitelist: ['auth', 'cart']
+	whitelist: ['auth', 'cart', 'shop']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

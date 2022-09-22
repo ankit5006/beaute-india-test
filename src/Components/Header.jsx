@@ -2,21 +2,38 @@ import cart from 'assets/pictures/cart.svg';
 import logo from 'assets/pictures/header-logo.png';
 import search from 'assets/pictures/search.svg';
 import whishlist from 'assets/pictures/whishlist.svg';
+import { useUser } from 'hooks';
 import { Fragment } from "react";
 import { NavDropdown } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "store/auth/actions";
+import { logout } from 'store/auth/actions';
+import { destroy } from 'store/shop/actions';
 import { API_ENDPOINTS } from "utilities";
 
 function Header() {
 	const dispatch = useDispatch()
-	const { user } = useSelector(state => state.auth)
+	const { user } = useUser()
 
-	const handleLogout = () => {
-		console.log('d');
-		dispatch(logout(API_ENDPOINTS.LOGOUT))
+	const removeShop = () => {
+		dispatch(destroy(API_ENDPOINTS.LOGOUT))
+			.then(response => {
+				if (response) {
+					window.location.href = '/'
+				}
+			})
 	}
+
+	const logoutUser = () => {
+		dispatch(logout(API_ENDPOINTS.AUTH.LOGOUT))
+			.then(response => {
+				if (response?.success) {
+					window.location.href = '/products'
+				}
+			})
+	}
+
+
 
 	return (
 		<Fragment>
@@ -60,9 +77,12 @@ function Header() {
 							title={user?.name}
 							menuVariant="dark"
 						>
-							{/* <NavDropdown.Divider /> */}
-							<NavDropdown.Item onClick={handleLogout}>
-								Logout
+							<NavDropdown.Item onClick={logoutUser}>
+								Logout User
+							</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item onClick={removeShop}>
+								Logout Shop
 							</NavDropdown.Item>
 						</NavDropdown>
 					</li>

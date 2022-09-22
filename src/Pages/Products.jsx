@@ -2,36 +2,20 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { ProductCard, ProductQuery, Sidebar, Slider } from 'components/products';
-import { Fragment } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useShop } from 'hooks';
+import { Fragment, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
-	const [searchParams] = useSearchParams();
-	const category_id = searchParams.get("category")
-	// const [data, setData] = useState([])
+	const { isLoggedIn } = useShop()
+	const navigate = useNavigate()
 
+	useEffect(() => {
+		if (!isLoggedIn) {
+			navigate('/')
+		}
+	}, [isLoggedIn])
 	const { data } = ProductQuery()
-
-	// useEffect(() => {
-	// 	if (typeof category_id === 'undefined') {
-	// 		setData(products)
-	// 	}
-	// }, [products])
-
-
-	// useEffect(() => {
-	// 	if (category_id) {
-	// 		request.post(API_ENDPOINTS.PRODUCT_LIST_BY_CATEGORY_ID, { id: category_id })
-	// 			.then(response => {
-	// 				console.log(response);
-	// 				setData(response?.data || [])
-	// 			})
-	// 	}
-
-	// }, [category_id])
-
-
-
 
 	return (
 		<Fragment>

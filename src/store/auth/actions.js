@@ -25,10 +25,7 @@ export const login = (url, payload) => dispatch => {
 
     return requestFromServer.login(url, payload).then(response => {
         dispatch(actions.endCall())
-        if (response.status !== 200) {
-            dispatch(actions.catchError({ message: response.data.message }))
-        }
-        console.log('response.data', response.data.data);
+
         dispatch(actions.login({ accessToken: response.data.data.token, user: response.data.data.user }))
         return response.data
     }).catch(error => {
@@ -59,9 +56,7 @@ export const logout = (url, config) => dispatch => {
 
     return requestFromServer.logout(url, config).then(response => {
         dispatch(actions.endCall())
-        if (response.status !== 200) {
-            dispatch(actions.catchError({ message: response.data.message }))
-        }
+
 
         dispatch(actions.logout())
         return response.data

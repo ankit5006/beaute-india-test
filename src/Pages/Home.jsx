@@ -1,10 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import group15 from 'assets/pictures/Group 1.5.png';
 import group1 from 'assets/pictures/Group 1.png';
 import group3 from 'assets/pictures/Group 3.png';
 import { LoginForm } from 'components/home';
-import { Fragment } from "react";
+import { useShop } from 'hooks';
+import { Fragment, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+	const { isLoggedIn } = useShop()
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (isLoggedIn) {
+			navigate('/products')
+		}
+	}, [isLoggedIn])
+
+
 	return (
 		<Fragment>
 			<div className='container-fluid bg'>

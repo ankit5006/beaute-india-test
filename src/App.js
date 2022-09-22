@@ -1,7 +1,6 @@
 import { createElement, Fragment } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import routes from 'routes';
-import { isAuthenticated } from 'utilities';
 
 function App() {
 	return (
@@ -21,11 +20,12 @@ function App() {
 						<Fragment key={idx}>
 							<Route
 								path={route.path}
-								element={isAuthenticated() ? (
-									createElement(route.component)
-								) : (
-									<Navigate to="/" replace />
-								)}
+								element={createElement(route.component)}
+							// element={isAuthenticated() ? (
+							// 	createElement(route.component)
+							// ) : (
+							// 	<Navigate to="/" replace />
+							// )}
 							/>
 						</Fragment>
 					)

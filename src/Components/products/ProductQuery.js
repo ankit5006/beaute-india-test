@@ -1,7 +1,9 @@
 import { API_ENDPOINTS, useQuery } from "utilities";
 
-const ProductQuery = () => {
-    const { data, isLoading, isError } = useQuery(API_ENDPOINTS.PRODUCT_LIST)
+const ProductQuery = (id) => {
+
+    const url = id ? `${API_ENDPOINTS.PRODUCT}/${id}` : `${API_ENDPOINTS.PRODUCT}${window.location.search}`
+    const { data, isLoading, isError } = useQuery(url)
 
     return {
         data: data,
