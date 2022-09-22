@@ -11,15 +11,17 @@ import Signup from "pages/Signup"
 const publicRoutes = [
     { path: "*", component: Page404 },
     { path: '/', component: Home },
-    { path: "/login", component: Login },
-    { path: "/signup", component: Signup },
 ]
 
 const protectedRoutes = [
+    { path: "/signup", component: Signup },
+    { path: "/login", component: Login },
     { path: "/products", component: Products },
     { path: "/products/:id", component: ProductDetail },
     { path: "/cart", component: Cart },
     { path: "/checkout", component: Checkout },
 ]
+
+
 
 export default { publicRoutes, protectedRoutes }

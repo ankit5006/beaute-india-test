@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-vars */
 import editIcon from 'assets/pictures/Icon material-edit.svg';
 import { Fragment } from "react";
 import { API_ENDPOINTS, useQuery } from "utilities";
 
-const AddressList = () => {
+const AddressList = ({ idState }) => {
     const { data } = useQuery(API_ENDPOINTS.ADDRESS)
+    const [id, setId] = idState
 
     const handleEdit = (id) => {
-        console.log(id)
+        setId(id)
     }
 
     return (

@@ -2,10 +2,11 @@ import { AddressForm, AddressList, UserLoginForm } from 'components/checkout';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { useUser } from 'hooks';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 const Checkout = () => {
 	const { isUserLoggedIn } = useUser()
+	const [id, setId] = useState(0)
 
 	return (
 		<Fragment>
@@ -20,7 +21,7 @@ const Checkout = () => {
 
 								<h2>Delivery address</h2>
 
-								{isUserLoggedIn && (<AddressForm />)}
+								{isUserLoggedIn && (<AddressForm editId={id} />)}
 
 							</div>
 
@@ -33,7 +34,7 @@ const Checkout = () => {
 								<div className="new2"></div>
 							</div>
 
-							<AddressList />
+							<AddressList idState={[id, setId]} />
 
 							<div className="mb-2">
 								<div className="new2"></div>

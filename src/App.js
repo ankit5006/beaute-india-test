@@ -1,8 +1,10 @@
+import { useShop } from 'hooks';
 import { createElement, Fragment } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import routes from 'routes';
 
 function App() {
+	const { isLoggedIn } = useShop()
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -20,12 +22,12 @@ function App() {
 						<Fragment key={idx}>
 							<Route
 								path={route.path}
-								element={createElement(route.component)}
-							// element={isAuthenticated() ? (
-							// 	createElement(route.component)
-							// ) : (
-							// 	<Navigate to="/" replace />
-							// )}
+								// element={createElement(route.component)}
+								element={isLoggedIn ? (
+									createElement(route.component)
+								) : (
+									<Navigate to="/" replace />
+								)}
 							/>
 						</Fragment>
 					)

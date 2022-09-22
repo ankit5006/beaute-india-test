@@ -7,7 +7,7 @@ import { mutate } from 'swr';
 import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
 
-const AddressForm = () => {
+const AddressForm = ({ editId }) => {
     const [initialValues, setInitialValues] = useState({
         title: '',
         type: '',
@@ -19,19 +19,19 @@ const AddressForm = () => {
         zip: '',
     })
 
-    const formik = useFormik({
-        initialValues,
-        onSubmit: (values) => {
-            request.post(API_ENDPOINTS.ADDRESS, values)
-                .then(response => {
-                    if (response?.success) {
-                        notification('success', response?.message)
-                        mutate(API_ENDPOINTS.ADDRESS)
-                    }
-                })
-        }
-    })
+    const onSubmit = (values) => {
+        const url = editId ? `${API_ENDPOINTS.ADDRESS}/edit/${editId}` : API_ENDPOINTS.ADDRESS
+        request.post(url, values)
+            .then(response => {
+                if (response?.success) {
+                    notification('success', response?.message)
+                    mutate(API_ENDPOINTS.ADDRESS)
+                    formik.handleReset()
+                }
+            })
+    }
 
+    const formik = useFormik({ initialValues, onSubmit })
 
     return (
         <Fragment>
