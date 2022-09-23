@@ -6,32 +6,38 @@ import { Fragment, useState } from "react";
 import { mutate } from 'swr';
 import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
+import { toJson } from 'utilities/str';
 
-const AddressForm = ({ editId }) => {
+const AddressForm = ({ editId, data, handleClose }) => {
+    const data_address = toJson(data?.address)
     const [initialValues, setInitialValues] = useState({
-        title: '',
-        type: '',
+        title: data?.title || '',
+        type: data?.type || '',
         default: true,
-        address: '',
-        country: '',
-        state: '',
-        city: '',
-        zip: '',
+        address: data_address?.address || '',
+        country: data_address?.country || '',
+        state: data_address?.state || '',
+        city: data_address?.city || '',
+        zip: data_address?.zip || '',
     })
 
     const onSubmit = (values) => {
-        const url = editId ? `${API_ENDPOINTS.ADDRESS}/edit/${editId}` : API_ENDPOINTS.ADDRESS
+        const url = data?.id ? `${API_ENDPOINTS.ADDRESS}/edit/${data?.id}` : API_ENDPOINTS.ADDRESS
         request.post(url, values)
             .then(response => {
                 if (response?.success) {
                     notification('success', response?.message)
                     mutate(API_ENDPOINTS.ADDRESS)
+                    if (data?.id) {
+                        mutate(`${API_ENDPOINTS.ADDRESS}/${data?.id}`)
+                    }
                     formik.handleReset()
+                    handleClose()
                 }
             })
     }
 
-    const formik = useFormik({ initialValues, onSubmit })
+    const formik = useFormik({ initialValues, enableReinitialize: true, onSubmit })
 
     return (
         <Fragment>

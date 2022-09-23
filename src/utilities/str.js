@@ -6,3 +6,11 @@ export const removeHtmlTags = (str) => {
     }
     return str;
 }
+
+export const toJson = (string) => {
+    try {
+        return JSON.parse(string)
+    } catch (_) {
+        return undefined
+    }
+}

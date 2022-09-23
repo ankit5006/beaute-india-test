@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 import editIcon from 'assets/pictures/Icon material-edit.svg';
-import { Fragment } from "react";
-import { API_ENDPOINTS, useQuery } from "utilities";
+import { Fragment, useState } from "react";
+import AddressQuery from './AddressQuery';
+import EditAddress from './EditAddress';
 
 const AddressList = ({ idState }) => {
-    const { data } = useQuery(API_ENDPOINTS.ADDRESS)
+    const { data } = AddressQuery()
+    const [show, setShow] = useState(false);
     const [id, setId] = idState
 
     const handleEdit = (id) => {
         setId(id)
+        setShow(true)
     }
 
     return (
@@ -52,6 +55,8 @@ const AddressList = ({ idState }) => {
                     <p className="text-center my-3">No Address Found</p>
                 )}
             </div>
+
+            <EditAddress modelState={[show, setShow]} id={id} />
         </Fragment>
     )
 }
