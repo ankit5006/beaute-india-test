@@ -19,7 +19,7 @@ const Home = () => {
 
 
 	return (
-		<Fragment className='bg'>
+		<Fragment>
 			<div className='container-fluid bg'>
 				<div className="login-container">
 					<div className="row">

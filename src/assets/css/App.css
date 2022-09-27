@@ -726,6 +726,7 @@ h6 {
 
 .bg {
 	background: #F6EFFD;
+	height: 100vh !important;
 }
 
 .login-img .row {
