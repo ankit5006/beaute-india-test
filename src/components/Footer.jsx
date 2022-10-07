@@ -7,6 +7,8 @@ import netbanking from 'assets/pictures/Netbanking.png';
 import upi from 'assets/pictures/UPI.png';
 import visa from 'assets/pictures/Visa.png';
 import wh from 'assets/pictures/wh-ft.png';
+import { Link } from "react-router-dom";
+
 import { Fragment } from "react";
 
 function Footer() {
@@ -27,16 +29,16 @@ function Footer() {
 								<ul>
 									<li>
 										<div className="foothead mb-3">
-											BEAUT INDIA
+											BEAUTE INDIA
 										</div>
 									</li>
-									<li>Who we are ?</li>
-									<li>Terms & Conditions</li>
-									<li>We respect your privacy </li>
-									<li>Contact Us</li>
-									<li>Shipping & Returns</li>
-									<li>Authentication Certificate </li>
-									<li>FAQs</li>
+									<Link to="#"><li>Who we are ?</li></Link>
+									<Link to="#"><li>Terms & Conditions</li></Link>
+									<Link to="#"><li>We respect your privacy </li></Link>
+									<Link to="#"><li>Contact Us</li></Link>
+									<Link to="#"><li>Shipping & Returns</li></Link>
+									<Link to="#"><li>Authentication Certificate </li></Link>
+									<Link to="#"><li>FAQs</li></Link>
 								</ul>
 							</div>
 							<div className="child-foot">
@@ -66,12 +68,12 @@ function Footer() {
 											SHOP BY
 										</div>
 									</li>
-									<li>Fragrance For Him</li>
-									<li>Fragrance For Her</li>
-									<li>Makeup</li>
-									<li>Body Care</li>
-									<li>Home Fragrance</li>
-									<li>Luggage</li>
+									<Link to="#"><li>Fragrance For Him</li></Link>
+									<Link to="#"><li>Fragrance For Her</li></Link>
+									<Link to="#"><li>Makeup</li></Link>
+									<Link to="#"><li>Body Care</li></Link>
+									<Link to="#"><li>Home Fragrance</li></Link>
+									<Link to="#"><li>Luggage</li></Link>
 								</ul>
 							</div>
 							<div className="footdata">

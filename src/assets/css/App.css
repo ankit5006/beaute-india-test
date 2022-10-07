@@ -38,7 +38,7 @@ h6 {
 .logoo h1 {
 	font-size: 30px;
 	font-family: 'Roboto', sans-serif;
-	font-weight: bolder;
+	font-weight: bold;
 	margin: 0 20px;
 
 }
@@ -48,7 +48,7 @@ h6 {
 	color: #fff;
 	font-size: 30px;
 	font-family: 'Roboto', sans-serif;
-	font-weight: bolder;
+	font-weight: bold;
 }
 
 .navhead-links {
@@ -364,7 +364,7 @@ h6 {
 
 .cathead {
 
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .list-group-item {
@@ -520,7 +520,7 @@ h6 {
 	margin: 50px 0 50px 20px;
 	font-size: 40px;
 	color: #000;
-	font-weight: bolder;
+	font-weight: bold;
 	font-family: Montserrat, sans-serif;
 }
 
@@ -585,14 +585,14 @@ h6 {
 
 .card-title {
 	color: #000;
-	font-size: 20px;
-	font-weight: bolder;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .card p {
 	color: #000;
 	font-size: 10px;
-	font-weight: bolder;
+	font-weight: bold;
 }
 
 
@@ -607,13 +607,13 @@ h6 {
 .price {
 	color: #000;
 	font-size: 20px;
-	font-weight: bolder;
+	font-weight: bold;
 }
 
 .price-buy button {
 	padding: 3px 13px;
 	font-size: 12px;
-	font-weight: bolder;
+	font-weight: bold;
 	background: transparent;
 	border: 2px solid black;
 
@@ -925,7 +925,7 @@ form h6 {
 
 .foothead {
 	font-weight: bold;
-	font-size: 17px;
+	font-size: 20px;
 }
 
 
@@ -936,10 +936,18 @@ form h6 {
 
 .footdata ul li {
 	list-style: none;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 400;
 
 }
+
+.footdata ul a  {
+
+	text-decoration: none !important;
+	color: #fff !important;
+
+}
+
 
 .footdata ul {
 	padding-left: 0px !important;
@@ -1159,7 +1167,7 @@ form h6 {
 	/* width: 35%; */
 	text-align: center;
 	font-size: 15px;
-	font-weight: bolder;
+	font-weight: bold;
 
 }
 
@@ -1194,7 +1202,7 @@ form h6 {
 .add-to-cart-whishlist .btn-1 {
 
 	border-radius: none;
-	padding: 11px 26.7%;
+	padding: 10px 26.7%;
 	font-weight: bold;
 	background: #000;
 	color: #fff;
@@ -1214,7 +1222,7 @@ form h6 {
 
 .add-to-cart-whishlist .btn-2 {
 
-	padding: 11px 5% 7.5px 5%;
+	padding: 6px 5% 5px 5%;
 	font-weight: bold;
 	background: transparent;
 	border: 1px solid #000;
@@ -1234,7 +1242,7 @@ form h6 {
 }
 
 .buy-now-btn .button {
-	padding: 10px 35%;
+	padding: 10px 35.6%;
 	background-color: transparent;
 	border: 1px solid #000;
 	color: #000;
@@ -1354,7 +1362,7 @@ form h6 {
 		/* width: 35%; */
 		text-align: center;
 		font-size: 15px;
-		font-weight: bolder;
+		font-weight: bold;
 
 	}
 
@@ -1398,18 +1406,23 @@ form h6 {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-weight: bolder;
+	font-weight: bold;
 	font-family: Montserrat, sans-serif !important;
 }
 
 .Related-product-section h3 {
 
 	cursor: pointer;
+	font-size: 32px;
+	font-weight: bold;
+	color: #000;
 }
 
 .Related-product-section p {
 
 	cursor: pointer;
+	font-size: 16px;
+	color: #000;
 
 }
 
@@ -2087,6 +2100,7 @@ select option[value=""] {
 .total-section h1 {
 
 	font-weight: 600;
+	font-size: 40px;
 
 }
 
@@ -2106,6 +2120,7 @@ select option[value=""] {
 
 .product-price h5 {
 	font-weight: bold;
+	font-size: 18px;
 }
 
 .product-price span {
@@ -2209,7 +2224,7 @@ select option[value=""] {
 	/* width: 35%; */
 	text-align: center;
 	font-size: 20px;
-	font-weight: bolder;
+	font-weight: bold;
 
 }
 
@@ -2247,13 +2262,14 @@ select option[value=""] {
 
 .coupon-section {
 	box-shadow: 0px 3px 6px #00000029;
-	background: #fff;
+	background: #F3F3F3;
 	padding: 20px 0 20px 20px;
 }
 
 .coupon-section h5 {
 	margin-bottom: 20px;
 	font-weight: bold;
+	font-size: 18px;
 }
 
 .coupon-btn {
