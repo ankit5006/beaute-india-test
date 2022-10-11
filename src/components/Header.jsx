@@ -1,12 +1,12 @@
 import cart from 'assets/pictures/cart.svg';
 import logo from 'assets/pictures/header-logo.png';
-import search from 'assets/pictures/search.svg';
+import searchIcon from 'assets/pictures/search.svg';
 import whishlist from 'assets/pictures/whishlist.svg';
 import { useUser } from 'hooks';
-import { Fragment } from "react";
+import { Fragment, useState } from 'react';
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { logout } from 'store/auth/actions';
 import { destroy } from 'store/shop/actions';
 import { API_ENDPOINTS } from "utilities";
@@ -14,6 +14,28 @@ import { API_ENDPOINTS } from "utilities";
 function Header() {
 	const dispatch = useDispatch()
 	const { user } = useUser()
+	const [search, setSearch] = useState(null)
+
+	let [searchParams] = useSearchParams();
+	const navigate = useNavigate()
+
+	const handleNavigate = (e, key, value) => {
+		const Obj = {}
+		for (const [key, value] of searchParams) {
+			Object.assign(Obj, { [key]: value })
+		}
+		Object.assign(Obj, { [key]: value })
+		const query = new URLSearchParams(Obj).toString()
+		navigate(`/products?${query}`);
+	}
+
+	const onSubmit = (e) => {
+		e.preventDefault()
+		console.log(typeof search);
+		if (search) {
+			handleNavigate('', 'search', search)
+		}
+	}
 
 	const removeShop = () => {
 		dispatch(destroy(API_ENDPOINTS.LOGOUT))
@@ -48,13 +70,22 @@ function Header() {
 						<div className="wrapper">
 							<div className="container searchcontainer">
 								<div className="search_wrap search_wrap_1">
-									<div className="search_box">
-										<input type="text" className="input-search" placeholder="SEARCH" />
-										<div className="btn btn_common"><Link to="">
-											<img src={search} className="search-img" alt="" />
-										</Link>
+									<form onSubmit={onSubmit}>
+										<div className="search_box">
+											<input
+												type="text"
+												className="input-search"
+												placeholder="SEARCH"
+												value={search}
+												onChange={e => setSearch(e.target.value)}
+											/>
+											<button type='submit' className="btn btn_common" >
+
+												<img src={searchIcon} className="search-img" alt="" />
+
+											</button>
 										</div>
-									</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -74,13 +105,18 @@ function Header() {
 					<li>
 						<NavDropdown
 							id="nav-dropdown-dark-example"
-							title={user?.name}
+							title={user?.name || 'Account'}
 							menuVariant="dark"
 						>
-							<NavDropdown.Item onClick={logoutUser}>
-								Logout User
-							</NavDropdown.Item>
-							<NavDropdown.Divider />
+							{user && (
+								<Fragment>
+									<NavDropdown.Item onClick={logoutUser}>
+										Logout User
+									</NavDropdown.Item>
+									<NavDropdown.Divider />
+								</Fragment>
+							)}
+
 							<NavDropdown.Item onClick={removeShop}>
 								Logout Shop
 							</NavDropdown.Item>
