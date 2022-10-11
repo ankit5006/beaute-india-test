@@ -14,7 +14,7 @@ const Slider = () => {
             <div className="carousel-inner">
                 {data.map((item, idx) => (
                     <Fragment key={idx}>
-                        <div className={`carousel-item ${idx === 0} ? 'active' : '`}>
+                        <div className={`carousel-item ${idx === 0 ? 'active' : ''} `}>
                             <img src={item.image || banner} className="d-block w-100" alt="..." />
                         </div>
                     </Fragment>

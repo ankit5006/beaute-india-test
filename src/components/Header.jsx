@@ -2,7 +2,7 @@ import cart from 'assets/pictures/cart.svg';
 import logo from 'assets/pictures/header-logo.png';
 import searchIcon from 'assets/pictures/search.svg';
 import whishlist from 'assets/pictures/whishlist.svg';
-import { useUser } from 'hooks';
+import { useCart, useUser } from 'hooks';
 import { Fragment, useState } from 'react';
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,7 @@ import { API_ENDPOINTS } from "utilities";
 function Header() {
 	const dispatch = useDispatch()
 	const { user } = useUser()
+	const { totalQuantity } = useCart()
 	const [search, setSearch] = useState(null)
 
 	let [searchParams] = useSearchParams();
@@ -99,6 +100,12 @@ function Header() {
 					</li>
 					<li>
 						<Link to="/cart">
+							{totalQuantity && (
+								<span style={{ fontSize: 12 }} className=' bg-danger p-1 rounded'>
+									{totalQuantity}
+								</span>
+							)}
+
 							<img src={cart} className="cart-img" alt="" />
 						</Link>
 					</li>

@@ -4,7 +4,7 @@ import ractangleImage from 'assets/pictures/Rectangle 633.png';
 import QuantityUpdate from "components/cart/QuantityUpdate";
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import { ProductQuery } from "components/products";
+import { ProductCard, ProductQuery } from "components/products";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -17,6 +17,7 @@ const ProductDetail = () => {
 	const { data: product } = ProductQuery(id)
 	const { data: carts } = useSelector(state => state.cart)
 	const currentItem = carts.find(item => item?.id === product?.id)
+	const { data: products } = ProductQuery()
 
 	const addToCart = () => {
 		const data = {
@@ -174,82 +175,22 @@ const ProductDetail = () => {
 			<div className="container">
 				<div className="row text-center mt-2 mb-5">
 
-					<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-						<div className="card mt-3 mb-2">
-							<img src={process.env.PUBLIC_URL + "pictures/img1.png"} alt="" />
-							<h2 className="card-title mb-2">
-								Channel perfum
-							</h2>
-							<p>
-								Lorem ipsum Lorem ipsum Lorem
-							</p>
-							<div className="price-buy pt-3 pb-3">
-								<div className="price">
-									RS 1250
-								</div>
-								<div>
-									<button>Buy Now</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-						<div className="card mt-3 mb-2">
-							<img src={process.env.PUBLIC_URL + "pictures/img2.png"} alt="" />
-							<h2 className="card-title mb-2">
-								Channel perfum
-							</h2>
-							<p>
-								Lorem ipsum Lorem ipsum Lorem
-							</p>
-							<div className="price-buy pt-3 pb-3">
-								<div className="price">
-									RS 1250
-								</div>
-								<div>
-									<button>Buy Now</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-						<div className="card mt-3 mb-2">
-							<img src={process.env.PUBLIC_URL + "pictures/img3.png"} alt="" />
-							<h2 className="card-title mb-2">
-								Channel perfum
-							</h2>
-							<p>
-								Lorem ipsum Lorem ipsum Lorem
-							</p>
-							<div className="price-buy pt-3 pb-3">
-								<div className="price">
-									RS 1250
-								</div>
-								<div>
-									<button>Buy Now</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-						<div className="card mt-3 mb-2">
-							<img src={process.env.PUBLIC_URL + "pictures/img4.png"} alt="" />
-							<h2 className="card-title mb-2">
-								Channel perfum
-							</h2>
-							<p>
-								Lorem ipsum Lorem ipsum Lorem
-							</p>
-							<div className="price-buy pt-3 pb-3">
-								<div className="price">
-									RS 1250
-								</div>
-								<div>
-									<button>Buy Now</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					{products.length > 0 ? (
+						<Fragment>
+							{products.map((product, idx) => {
+								if (idx < 4) {
+									return (
+										<Fragment key={idx}>
+											<ProductCard product={product} />
+										</Fragment>
+									)
+								}
+							})}
+						</Fragment>
+					) : (
+						<div className='alert alert-info'>No product found</div>
+					)}
+
 				</div>
 			</div>
 			<Footer />
