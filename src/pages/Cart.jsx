@@ -2,6 +2,7 @@ import deleteImg from 'assets/pictures/delete.png';
 import QuantityUpdate from 'components/cart/QuantityUpdate';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
+import { ProductCard, ProductQuery } from 'components/products';
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import { remove } from 'store/cart/actions';
 const Cart = () => {
 	const dispatch = useDispatch()
 	const { data, subTotal } = useSelector(state => state.cart)
+	const { data: products } = ProductQuery()
 
 	return (
 		<Fragment>
@@ -103,91 +105,28 @@ const Cart = () => {
 					</div>
 					<div className=" Related-product-section">
 						<h3>You may also like</h3>
-						<p>View more</p>
+						<Link to='/products'>
+							View More
+						</Link>
 					</div>
 					<div className="">
 						<div className="row text-center mt-2 mb-5">
 
-							<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-								<div className="card mt-3 mb-2">
-									<img src={process.env.PUBLIC_URL + "pictures/img1.png"} alt="" />
-
-									<h2 className="card-title mb-2">
-										Channel perfum
-									</h2>
-									<p>
-										Lorem ipsum Lorem ipsum Lorem
-									</p>
-									<div className="price-buy pt-3 pb-3">
-										<div className="price">
-											RS 1250
-										</div>
-										<div>
-											<button>Buy Now</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-								<div className="card mt-3 mb-2">
-									<img src={process.env.PUBLIC_URL + "pictures/img2.png"} alt="" />
-
-									<h2 className="card-title mb-2">
-										Channel perfum
-									</h2>
-									<p>
-										Lorem ipsum Lorem ipsum Lorem
-									</p>
-									<div className="price-buy pt-3 pb-3">
-										<div className="price">
-											RS 1250
-										</div>
-										<div>
-											<button>Buy Now</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-								<div className="card mt-3 mb-2">
-									<img src={process.env.PUBLIC_URL + "pictures/img3.png"} alt="" />
-
-									<h2 className="card-title mb-2">
-										Channel perfum
-									</h2>
-									<p>
-										Lorem ipsum Lorem ipsum Lorem
-									</p>
-									<div className="price-buy pt-3 pb-3">
-										<div className="price">
-											RS 1250
-										</div>
-										<div>
-											<button>Buy Now</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3 col-md-6 col-sm-6 text-center">
-								<div className="card mt-3 mb-2">
-									<img src={process.env.PUBLIC_URL + "pictures/img4.png"} alt="" />
-
-									<h2 className="card-title mb-2">
-										Channel perfum
-									</h2>
-									<p>
-										Lorem ipsum Lorem ipsum Lorem
-									</p>
-									<div className="price-buy pt-3 pb-3">
-										<div className="price">
-											RS 1250
-										</div>
-										<div>
-											<button>Buy Now</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							{products.length > 0 ? (
+								<Fragment>
+									{products.map((product, idx) => {
+										if (idx < 4) {
+											return (
+												<Fragment key={idx}>
+													<ProductCard product={product} />
+												</Fragment>
+											)
+										}
+									})}
+								</Fragment>
+							) : (
+								<div className='alert alert-info'>No product found</div>
+							)}
 						</div>
 					</div>
 				</div>
