@@ -19,9 +19,14 @@ const Checkout = () => {
 
 								{!isUserLoggedIn && (<UserLoginForm />)}
 
-								<h2>Delivery address</h2>
 
-								{isUserLoggedIn && (<AddressForm editId={id} />)}
+								{isUserLoggedIn && (
+									<Fragment>
+
+										<h2>Delivery address</h2>
+										<AddressForm editId={id} />
+									</Fragment>
+								)}
 
 							</div>
 
@@ -41,8 +46,12 @@ const Checkout = () => {
 							</div>
 						</Fragment>
 					)}
+					{
+						isUserLoggedIn && (
 
-					<OrderForm />
+							<OrderForm />
+						)
+					}
 				</div>
 			</div>
 			<Footer />

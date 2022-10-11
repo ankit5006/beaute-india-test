@@ -12,12 +12,33 @@ const Sidebar = () => {
     const handleNavigate = (e, key, value) => {
         const Obj = {}
         for (const [key, value] of searchParams) {
+            if (key === 'price') {
+                Object.assign(Obj, { 'price_min': value[0] })
+                Object.assign(Obj, { 'price_max': value[1] })
+            } else {
+                Object.assign(Obj, { [key]: value })
+            }
+        }
+        if (key === 'price') {
+            Object.assign(Obj, { 'price_min': value[0] })
+            Object.assign(Obj, { 'price_max': value[1] })
+        } else {
             Object.assign(Obj, { [key]: value })
         }
-        Object.assign(Obj, { [key]: value })
+        // Object.assign(Obj, { [key]: value })
         const query = new URLSearchParams(Obj).toString()
         navigate(`/products?${query}`);
     }
+
+    const priceList = [
+        { label: '0-499', value: [0, 499] },
+        { label: '500-999', value: [500, 999] },
+        { label: '2000-3999', value: [2000, 3999] },
+        { label: '4000-10000', value: [4000, 10000] },
+        { label: '10000-15000', value: [10000, 15000] },
+        { label: '15000-20000', value: [15000, 20000] },
+        { label: '20000 &', value: [20000] },
+    ]
 
     return (
         <div className="scroll-div-side">
@@ -105,42 +126,34 @@ const Sidebar = () => {
                     </li>
                     <div className="scroll-div">
                         <ul className="list-group">
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 0-499
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 500-999
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 1000-1999
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 2000-3999
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 4000-10000
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 10000-15000
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 15000-20000
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Rs. 20000 & above
-                            </li>
+
+                            {
+                                priceList.map((price, idx) => (
+                                    <li className="list-group-item" key={idx}>
+                                        <input
+                                            id={`price_${idx}`}
+                                            className="form-check-input me-1"
+                                            type="radio"
+                                            name='price'
+                                            value={price.value}
+                                            onClick={(e) => handleNavigate(e, 'price', price.value)}
+                                        />
+                                        <label htmlFor={`price_${idx}`}>
+
+                                            Rs. {price.label}
+                                        </label>
+                                    </li>
+                                ))
+                            }
+
+
+
+
                         </ul>
                     </div>
                 </ul>
             </div>
+
             <div className="size-filter mb-5">
                 <ul className="nav flex-column">
                     <li className='mb-3' >

@@ -1,4 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import filterImg from 'assets/pictures/filter.png';
+import hrView from 'assets/pictures/hr-view.svg';
+import squareView from 'assets/pictures/square-view.svg';
+
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { ProductCard, ProductQuery, Sidebar, Slider } from 'components/products';
@@ -40,7 +44,12 @@ const Products = () => {
 
 
 									<div className="main-box">
-										<div className="box1 "> <p> VIEW AS <img className='im-1' src="/pictures/square-view.svg" alt="" /> <img className='im-2' src="/pictures/hr-view.svg" alt="" /></p> </div>
+										<div className="box1 ">
+											<p> VIEW AS
+												<img className='im-1' src={squareView} alt="" />
+												<img className='im-2' src={hrView} alt="" />
+											</p>
+										</div>
 										<div className="box2 "><p>ITEMS PER PAGE:50</p></div>
 										<div className="box3 "><select className="form-select form-filter" aria-label="Default select example">
 											<option selected>Default Sorting</option>
@@ -48,7 +57,13 @@ const Products = () => {
 											<option value="2">Low</option>
 											<option value="3">High</option>
 										</select></div>
-										<div className="box4 " ><p><span onClick="openside()"><img src="/pictures/filter.png" width="10%" alt="" />&nbsp;&nbsp;Filter</span></p></div>
+										<div className="box4 " >
+											<p>
+												<span onClick="openside()">
+													<img src={filterImg} width="10%" alt="" />&nbsp;&nbsp;Filter
+												</span>
+											</p>
+										</div>
 									</div>
 
 
