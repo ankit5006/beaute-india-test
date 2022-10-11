@@ -53,7 +53,7 @@ export const register = (url, payload) => dispatch => {
 
 export const logout = (url, config) => dispatch => {
     dispatch(actions.startCall())
-
+    dispatch(actions.logout())
     return requestFromServer.logout(url, config).then(response => {
         dispatch(actions.endCall())
 
