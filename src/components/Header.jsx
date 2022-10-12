@@ -65,6 +65,7 @@ function Header() {
 					<Link to="/">
 						<img src={logo} alt="" />
 					</Link>
+					
 				</div>
 				<ul className="navhead-links" id="myDIV">
 					<li>
