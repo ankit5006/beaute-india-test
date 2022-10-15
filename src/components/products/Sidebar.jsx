@@ -33,6 +33,7 @@ const Sidebar = () => {
     const priceList = [
         { label: '0-499', value: [0, 499] },
         { label: '500-999', value: [500, 999] },
+        { label: '1000-2000', value: [1000, 2000] },
         { label: '2000-3999', value: [2000, 3999] },
         { label: '4000-10000', value: [4000, 10000] },
         { label: '10000-15000', value: [10000, 15000] },

@@ -169,7 +169,7 @@ const ProductDetail = () => {
 
 			<div className="container mt-5 Related-product-section">
 				<h3>Related Products</h3>
-				<p>View more</p>
+				<Link to='/products'>View more</Link>
 
 			</div>
 			<div className="container">

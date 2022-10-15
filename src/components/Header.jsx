@@ -65,7 +65,7 @@ function Header() {
 					<Link to="/">
 						<img src={logo} alt="" />
 					</Link>
-					
+
 				</div>
 				<ul className="navhead-links" id="myDIV">
 					<li>
@@ -100,13 +100,12 @@ function Header() {
 
 					</li>
 					<li>
-						<Link to="/cart">
-							{totalQuantity && (
+						<Link to="/cart" className=''>
+							<div className='text-center'>
 								<span style={{ fontSize: 12 }} className=' bg-danger p-1 rounded'>
 									{totalQuantity}
 								</span>
-							)}
-
+							</div>
 							<img src={cart} className="cart-img" alt="" />
 						</Link>
 					</li>
