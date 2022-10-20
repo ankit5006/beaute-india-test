@@ -3,11 +3,14 @@ import downArrow from 'assets/pictures/arrow-down.svg'
 import cancelImg from 'assets/pictures/Cancel-icon.png'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { API_ENDPOINTS, useQuery } from 'utilities'
+import BrandQuery from './BrandQuery'
 
 const Sidebar = () => {
     const { data: categories } = useQuery(API_ENDPOINTS.CATEGORIES)
     let [searchParams] = useSearchParams();
     const navigate = useNavigate()
+    const { brands } = BrandQuery()
+
 
     const handleNavigate = (e, key, value) => {
         const Obj = {}
@@ -74,46 +77,23 @@ const Sidebar = () => {
 
                     <div className="scroll-div">
                         <ul className="list-group">
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." onClick={(e) => handleNavigate(e, 'brand', '4515')} />
-                                4711
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." onClick={(e) => handleNavigate(e, 'brand', 'Alyssa')} />
-                                Alyssa
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Ashley
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Aramis
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Aspen
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Bahama
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Baomi
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Bentley
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Betty
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Barclay
-                            </li>
+
+                            {brands.map((brand, idx) => (
+                                <li className="list-group-item" key={idx}>
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="checkbox"
+                                        value={brand?.id}
+                                        onChange={(e) => handleNavigate(e, 'brand', e.target.value)}
+                                        id={`brand_${idx}`}
+                                    />
+                                    <label htmlFor={`brand_${idx}`}>
+                                        {brand?.name}
+                                    </label>
+                                </li>
+                            ))}
+
+
                         </ul>
                     </div>
 
