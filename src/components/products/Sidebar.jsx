@@ -4,13 +4,14 @@ import cancelImg from 'assets/pictures/Cancel-icon.png'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { API_ENDPOINTS, useQuery } from 'utilities'
 import BrandQuery from './BrandQuery'
+import SizeQuery from './SizeQuery'
 
 const Sidebar = () => {
     const { data: categories } = useQuery(API_ENDPOINTS.CATEGORIES)
     let [searchParams] = useSearchParams();
     const navigate = useNavigate()
     const { brands } = BrandQuery()
-
+    const { sizes } = SizeQuery()
 
     const handleNavigate = (e, key, value) => {
         const Obj = {}
@@ -24,7 +25,9 @@ const Sidebar = () => {
         }
         if (key === 'price') {
             Object.assign(Obj, { 'price_min': value[0] })
+
             Object.assign(Obj, { 'price_max': value[1] })
+
         } else {
             Object.assign(Obj, { [key]: value })
         }
@@ -41,7 +44,7 @@ const Sidebar = () => {
         { label: '4000-10000', value: [4000, 10000] },
         { label: '10000-15000', value: [10000, 15000] },
         { label: '15000-20000', value: [15000, 20000] },
-        { label: '20000 &', value: [20000] },
+        { label: '20000 &', value: [20000, 0] },
     ]
 
     return (
@@ -82,7 +85,8 @@ const Sidebar = () => {
                                 <li className="list-group-item" key={idx}>
                                     <input
                                         className="form-check-input me-1"
-                                        type="checkbox"
+                                        type="radio"
+                                        name='brand'
                                         value={brand?.id}
                                         onChange={(e) => handleNavigate(e, 'brand', e.target.value)}
                                         id={`brand_${idx}`}
@@ -142,46 +146,25 @@ const Sidebar = () => {
                     </li>
                     <div className="scroll-div">
                         <ul className="list-group">
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                4711
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Alyssa
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Ashley
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Aramis
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Aspen
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Bahama
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Baomi
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Bentley
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Betty
-                            </li>
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1" type="checkbox" value="" aria-label="..." />
-                                Barclay
-                            </li>
+
+
+                            {sizes.map((size, idx) => (
+                                <li className="list-group-item" key={idx}>
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="radio"
+                                        name='size'
+
+                                        value={size?.id}
+                                        onChange={(e) => handleNavigate(e, 'size', e.target.value)}
+                                        id={`size_${idx}`}
+                                    />
+                                    <label htmlFor={`size_${idx}`}>
+                                        {size?.name}
+                                    </label>
+                                </li>
+                            ))}
+
                         </ul>
                     </div>
                 </ul>

@@ -17,6 +17,7 @@ const API_ENDPOINTS = {
     SLIDER_IMAGES: 'sliderimages',
     ADDRESS: 'address',
     ORDER: 'order',
-    BRAND: 'brand'
+    BRAND: 'brand',
+    SIZE: 'size'
 }
 export default API_ENDPOINTS
