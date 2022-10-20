@@ -9,9 +9,23 @@ import visa from 'assets/pictures/Visa.png';
 import wh from 'assets/pictures/wh-ft.png';
 import { Link } from "react-router-dom";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { API_ENDPOINTS, request } from 'utilities';
+import notification from 'utilities/notification';
 
 function Footer() {
+	const [email, setEmail] = useState('')
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		request.post(API_ENDPOINTS.NEWSLETTER, { email })
+			.then(response => {
+				if (response?.success) {
+					notification('success', response?.message)
+					setEmail('')
+				}
+			})
+	}
+
 	return (
 		<Fragment>
 			<div className="container-fluid footsection ">
@@ -43,11 +57,14 @@ function Footer() {
 							</div>
 							<div className="child-foot">
 								<p className="mt-4">Sign up for our Newsletter</p>
-								<div className="foot-email-block mt-3">
-									<label className="f-email">
-										<input type="email" className="foot-email" placeholder="Your email address" />
-									</label>
-								</div>
+								<form onSubmit={handleSubmit}>
+									<div className="foot-email-block mt-3 d-flex">
+
+										<input type="email" name='email' className="foot-email" placeholder="Your email address" required onChange={e => setEmail(e.target.value)} value={email} />
+
+										<button type='submit' className='f-email border-0'></button>
+									</div>
+								</form>
 								<div className="cards-img mt-3">
 									<img src={visa} alt="" />
 									<img src={master} alt="" />

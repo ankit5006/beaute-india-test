@@ -18,6 +18,7 @@ const API_ENDPOINTS = {
     ADDRESS: 'address',
     ORDER: 'order',
     BRAND: 'brand',
-    SIZE: 'size'
+    SIZE: 'size',
+    NEWSLETTER: 'newsletter'
 }
 export default API_ENDPOINTS
