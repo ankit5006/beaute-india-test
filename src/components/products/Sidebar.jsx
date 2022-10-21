@@ -125,7 +125,7 @@ const Sidebar = () => {
                                         />
                                         <label htmlFor={`price_${idx}`}>
 
-                                            Rs. {price.label}
+                                        ₹{price.label}
                                         </label>
                                     </li>
                                 ))

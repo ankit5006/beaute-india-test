@@ -107,24 +107,23 @@ const OrderForm = () => {
                             </div>
                             <div className="col-lg-4">
                                 <div className="total-section">
-                                    <h1 className="mb-5"> <u> Total</u></h1>
+                                    <h1 style={{fontSize:"26px"}} className="mb-5"> <u> Total</u></h1>
                                     <div className="total-products">
                                         {items.map((item, idx) => (
                                             <div className="product-price" key={idx}>
-                                                <h5>{item?.model?.name}</h5>
-                                                <span>Rs. {item?.price * item?.quantity}</span>
+                                                <h5 style={{fontSize:"18px"}}>{item?.model?.name}</h5>
+                                                <span style={{fontSize:"18px"}}>₹ {item?.price * item?.quantity}</span>
                                             </div>
                                         ))}
 
-                                        <div className="product-price">
-                                            <h5>GST</h5><span>Rs. 0</span>
-                                        </div>
+                                        
                                         <div className="mb-2 mt-4">
                                             <div className="new2"></div>
                                         </div>
                                         <div className="product-price">
-                                            <h5>Sub Total</h5><span>Rs. {subTotal}</span>
+                                            <h5 style={{fontSize:"20px !important"}}>Sub Total</h5><span style={{fontSize:"20px"}}>₹ {subTotal}</span>
                                         </div>
+                                        <p>including ({(subTotal*18)/100}) in taxes</p>
                                     </div>
                                     <button type='submit' disabled={!isDisabled} className="payment-btn mt-5" > Proceed to Payment</button>
                                 </div>

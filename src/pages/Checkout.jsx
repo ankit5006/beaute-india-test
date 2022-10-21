@@ -23,7 +23,7 @@ const Checkout = () => {
 								{isUserLoggedIn && (
 									<Fragment>
 
-										<h2>Delivery address</h2>
+										<h2 style={{fontSize:"26px"}}>Delivery address</h2>
 										<AddressForm editId={id} />
 									</Fragment>
 								)}

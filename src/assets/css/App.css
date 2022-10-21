@@ -510,13 +510,13 @@ h6 {
 }
 .card-title {
   color: #000;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .card p {
   color: #000;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -529,7 +529,7 @@ h6 {
 
 .price {
   color: #000;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -693,7 +693,7 @@ form h6 {
 @media screen and (max-width: 1200px) {
   form h1 {
     text-align: center;
-    font-size: 50px;
+    font-size: 24px;
     font-family: Montserrat, sans-serif !important;
     font-weight: bold;
   }
@@ -792,8 +792,8 @@ form h6 {
 }
 
 .foothead {
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .footsection {
@@ -803,7 +803,7 @@ form h6 {
 
 .footdata ul li {
   list-style: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -824,7 +824,7 @@ form h6 {
 }
 
 .footer-logo-section img {
-  width: 50%;
+  width: 40%;
 }
 
 .footer-logo-section p {
@@ -1189,7 +1189,7 @@ form h6 {
 
 .Related-product-section h3 {
   cursor: pointer;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: bold;
   color: #000;
 }
@@ -1809,7 +1809,7 @@ select option[value=""] {
 
 .product-price h5 {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .product-price span {
@@ -1862,7 +1862,7 @@ select option[value=""] {
 }
 
 .head-price h5 {
-  font-size: 25px;
+  font-size: 22px;
   color: #000;
   font-weight: bold;
 }

@@ -54,20 +54,21 @@ const ProductDetail = () => {
 							</div>
 							<div className="col-lg-7">
 								<div className="product-details">
-									<h3>{product?.name}</h3>
+									<h3 style={{fontSize:"26px"}}>{product?.name}  </h3>
+									{/* <h3 style={{fontSize:"24px"}}>{product?.sale_price}  </h3> */}
 									<div className=" pt-3 pe-5 mb-3" dangerouslySetInnerHTML={{ __html: product?.short_description }} />
 
 									{
 										product?.sale_price > 0 ? (
 											<Fragment>
 												<del>
-													<h5>RS. {product?.normal_price}</h5>
+													<h5 style={{fontSize:"18px"}} >₹ {product?.normal_price}</h5>
 												</del>
-												<h4 className="mb-3">RS. {product?.sale_price}</h4>
+												<h4 style={{fontSize:"24px"}}  className="mb-3">₹ {product?.sale_price}</h4>
 											</Fragment>
 										) : (
 
-											<h4 className="pb-4 pt-4">RS. {product?.normal_price}</h4>
+											<h4  style={{fontSize:"20px"}} className="pb-4 pt-4">₹ {product?.normal_price}</h4>
 										)
 									}
 									{
@@ -127,7 +128,7 @@ const ProductDetail = () => {
 						<div className="tab-pane fade show active " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 							<div className="container mt-4 mb-4">
 								<div className="row">
-									<div dangerouslySetInnerHTML={{ __html: product?.long_description }} />
+									<div dangerouslySetInnerHTML={{ __html: product?.short_description }} />
 								</div>
 							</div>
 						</div>
@@ -168,7 +169,7 @@ const ProductDetail = () => {
 
 
 			<div className="container mt-5 Related-product-section">
-				<h3>Related Products</h3>
+				<h3 style={{fontSize:"24px"}}>Related Products</h3>
 				<Link to='/products'>View more</Link>
 
 			</div>

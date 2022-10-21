@@ -43,19 +43,26 @@ const ProductCard = ({ product }) => {
                         onClick={e => navigate(`/products/${product?.id}`)}
                         style={{ cursor: 'pointer' }}
                     />
-                    <h2 className="card-title mb-2" style={{}}>
+                    <h2 className="card-title mb-2" >
                         <Link to={`/products/${product?.id}`}>
 
                             {product?.name}
                         </Link>
                     </h2>
-                    <p className='line-clamp'>
+                    
+                    <p  className='line-clamp'>
                         {removeHtmlTags(product?.short_description)}
                     </p>
+                    {/* <p className='line-clamp'>
+                        {removeHtmlTags(product?.brand)}
+                    </p> */}
                     <div className="price-buy pt-3 pb-3">
-                        <div className="price">
-                            Rs {product?.normal_price}
-                        </div>
+                    <Link to={`/products/${product?.id}`}>
+                    <div className="price">
+                        ₹ {product?.normal_price}
+                        </div> 
+                        </Link>
+                       
                         <div className='d-flex'>
                             <button className='border-0 p-0'>
                                 <img src={whishlist} alt="" style={{ height: 18 }} />

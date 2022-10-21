@@ -63,7 +63,7 @@ function Header() {
 			<div className="navhead">
 				<div className="logoo">
 					<Link to="/">
-						<img src={logo} alt="" />
+					<img src={logo} style={{height: "2rem"}} alt="" />
 					</Link>
 
 				</div>

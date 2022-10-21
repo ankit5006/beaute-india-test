@@ -57,7 +57,7 @@ const Products = () => {
 
 					<div className="col-lg-10 col-md-9 main-content" >
 
-						<h1 className="mb-4">
+						<h1 className="mb-4" style={{fontSize:"24px"}}>
 							Product list
 						</h1>
 						<div className="container-fluid ">
@@ -96,7 +96,7 @@ const Products = () => {
 								</div>
 							</div>
 
-							<div className="row text-center mt-2 mb-5">
+							<div className="row text-center mt-2 mb-5 ">
 								{data.length > 0 ? (
 									<Fragment>
 										{data.map((product, idx) => (

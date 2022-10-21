@@ -19,7 +19,7 @@ const Cart = () => {
 			<div className="container-fluid">
 				<div className="main-cart-section">
 					<div className="container-fluid">
-						<h1 className="pt-4 cart-heading ">Cart</h1>
+						<h1 style={{fontSize:"26px"}} className="pt-4 cart-heading ">Cart</h1>
 						<div className="row mt-4 mb-5">
 							<div className="col-lg-8 ">
 								<div className="cart-section p-4">
@@ -35,18 +35,18 @@ const Cart = () => {
 															</div>
 															<div className="col-lg-9 col-md-9 col-sm-8">
 																<div className="head-price mt-3">
-																	<h5>{item?.model?.name}</h5>
-																	<h4>RS {item?.price}</h4>
+																	<h5 style={{fontSize:"20px" , padding: 20 }}>{item?.model?.name}</h5>
+																	<h4 style={{fontSize:"20px" , padding: 20 }}>₹{item?.price}</h4>
 																</div>
 																<div className="qunt-main">
 																	<div className="quantity mt-4">
-																		<h6>Quantity</h6>
+																		<h6 style={{fontSize:"22px"}}>Quantity</h6>
 
 																		<QuantityUpdate quantity={item?.quantity} id={item?.id} />
-																	</div>
+																		<div className='delete-img' >
+																	<img src={deleteImg} alt="" style={{marginLeft: "2rem"}} onClick={() => dispatch(remove(item.id))} />
 																</div>
-																<div className='delete-img mt-4'>
-																	<img src={deleteImg} alt="" onClick={() => dispatch(remove(item.id))} />
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -74,29 +74,32 @@ const Cart = () => {
 									</form>
 								</div>
 								<div className="total-section">
-									<h1 className="mb-5"> <u> Total</u></h1>
+									<h1 style={{fontSize:"26px"}} className="mb-5"> <u> Total</u></h1>
 									<div className="total-products">
 										{
 											data.map((item, idx) => (
 												<Fragment key={idx}>
 													<div className="product-price">
-														<h5>{item?.model?.name}</h5>
-														<span>{Number(item?.quantity) * Number(item?.price)}</span>
+														<h5 style={{fontSize:"20px"}}>{item?.model?.name}</h5>
+														<span style={{fontSize:"20px"}}>₹{Number(item?.quantity) * Number(item?.price)}</span>
 													</div>
 												</Fragment>
 											))
 										}
 
 
-										<div className="product-price">
+										{/* <div className="product-price">
 											<h5>GST</h5><span>0</span>
-										</div>
+										</div> */}
 										<div className="mb-2 mt-4">
 											<div className="new2"></div>
 										</div>
 										<div className="product-price">
-											<h5>Sub Total</h5><span>{subTotal}</span>
+											<h5 style={{fontSize:"24px"}}>Sub Total</h5><span style={{fontSize:"24px"}}>₹{subTotal}</span><br></br>
+											
+											
 										</div>
+										<p>including ({(subTotal*18)/100}) in taxes</p>
 									</div>
 									<Link to="/checkout" className="payment-btn mt-5" > Proceed to Payment</Link>
 								</div>
