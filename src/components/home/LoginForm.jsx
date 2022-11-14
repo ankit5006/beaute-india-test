@@ -1,5 +1,6 @@
 import { Button, Input, Select } from "components/forms";
 import { Field, FormikProvider, useFormik } from "formik";
+import logo from 'assets/pictures/header-logo.png';
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { save } from "store/shop/actions";
@@ -37,7 +38,7 @@ const LoginForm = () => {
         <Fragment>
             <FormikProvider value={formik}>
                 <form onSubmit={formik.handleSubmit}>
-                    <h1>BEAUT INDIA</h1>
+                <img src={logo} style={{height: "3rem"}} alt="" className="mt-4" />
                     <h6 className='mb-3'>LOG IN</h6>
 
                     <Field

@@ -46,7 +46,11 @@ const Cart = () => {
 																		<div className='delete-img' >
 																	<img src={deleteImg} alt="" style={{marginLeft: "2rem"}} onClick={() => dispatch(remove(item.id))} />
 																</div>
+																
 																	</div>
+																	<div className="quantity mt-4">
+																<h6 className="pe-4" >Sub Total</h6><span style={{fontSize:"20px"}}>₹{Number(item?.quantity) * Number(item?.price)}</span>
+																</div>
 																</div>
 															</div>
 														</div>

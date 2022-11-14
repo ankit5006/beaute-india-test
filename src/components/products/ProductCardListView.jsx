@@ -10,7 +10,7 @@ import notification from 'utilities/notification';
 import { removeHtmlTags } from 'utilities/str';
 import BrandQuery from './BrandQuery';
 
-const ProductCard = ({ product }) => {
+const ProductCardListView = ({ product }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { brands } = BrandQuery()
@@ -37,42 +37,24 @@ const ProductCard = ({ product }) => {
 
     return (
         <Fragment>
-            <div className="col-lg-3 col-md-6 col-sm-6 text-center">
+            {/* <div className="col-lg-3 col-md-6 col-sm-6 text-center">
                 <div className="card mt-3 mb-4">
-                    <img 
+                    <img
                         src={coverImage}
                         onError={onError}
                         alt=""
                         onClick={e => navigate(`/products/${product?.id}`)}
-                        style={{ cursor: 'pointer', height:"250px", fontWeight:"bold" }}
+                        style={{ cursor: 'pointer' }}
                     />
-                    <h6  className='line-clamp' style={{fontWeight:"bold" }} >
+                    <h6  className='line-clamp'>
                                         {product?.brand?.name} </h6>
-                                        <br></br>
                                         
-                    <h6 className="card-title mb-2" style={{fontSize:"14px" }} >
+                    <h6 className="card-title mb-2" >
                         <Link to={`/products/${product?.id}`}>
 
                             {product?.name}
                         </Link>
                     </h6>
-                    
-                  
-                    
-										
-                                        {/* <p  className='line-clamp'>
-                                        Category:{product?.category?.name} </p> */}
-                                        
-                                        {/* <p  className='line-clamp'>
-                                        Size:{product?.size?.name} </p> */}
-                                       
-                    
-                    {/* <p  className='line-clamp'>
-                        {removeHtmlTags(product?.short_description)}
-                    </p> */}
-                    {/* <p className='line-clamp'>
-                        {removeHtmlTags(product?.brand)}
-                    </p> */}
                     <div className="price-buy pt-3 pb-3">
                     <Link to={`/products/${product?.id}`}>
                     <div className="price">
@@ -90,9 +72,57 @@ const ProductCard = ({ product }) => {
                         </div>
                     </div>
                 </div>
+            </div> */}
+
+            <div className='row mt-5 pe-3 align-items-center' style={{ boxShadow:"0px 3px 6px #00000029" }}>
+              <div className='col-sm-4'>
+              <img
+                        src={coverImage}
+                        onError={onError}
+                        alt=""
+                        onClick={e => navigate(`/products/${product?.id}`)}
+                        style={{ cursor: 'pointer' ,  width:"80%" }}
+                    />
+              </div>
+              <div className='col-sm-8'>
+              <h6 className="card-title  mb-2" >
+                        <Link to={`/products/${product?.id}`}>
+
+                            {product?.name}
+                        </Link>
+                    </h6>
+                   <div className=' mb-3 d-flex flex-row align-items-center'>
+                   <h6  className='line-clamp'>
+                    {product?.brand?.name} </h6>
+                    <h6  className='line-clamp ms-5'>
+                    {product?.size?.name} </h6>
+                   </div>
+                    <p  className='line-clamp mb-4 mt-4'>
+                        {removeHtmlTags(product?.short_description)}
+                    </p>         
+                   <div className='d-flex flex-row align-items-center'>
+                    <div className="price-buy pt-3 pb-3 me-5">
+                    <Link to={`/products/${product?.id}`}>
+                    <div className="price">
+                        ₹ {product?.normal_price}
+                        </div> 
+                        </Link>
+                       
+                        <div className='d-flex ms-3 me-3'>
+                            <button className='border-0 p-0 ms-3 me-3'>
+                                <img src={whishlist} alt="" style={{ height: 18 }} />
+                            </button>
+                            <button className='border-0 p-0 ms-3 me-3'  onClick={addToCart}>
+                                <img src={cart} alt="" style={{ height: 18 }} />
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+              </div>
             </div>
+            
         </Fragment>
     )
 }
 
-export default ProductCard
+export default ProductCardListView
