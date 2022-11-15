@@ -179,7 +179,7 @@ const Products = () => {
   
 </div>
 <div className='footer'>
-   <Footer />
+   {/* <Footer /> */}
 </div>
               
 

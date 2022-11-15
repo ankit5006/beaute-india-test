@@ -10,6 +10,8 @@ import visa from 'assets/pictures/Visa.png';
 import wh from 'assets/pictures/wh-ft.svg';
 import { Link } from "react-router-dom";
 
+
+
 import { Fragment, useState } from "react";
 import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
@@ -47,11 +49,12 @@ function Footer() {
 											BEAUTE INDIA
 										</div>
 									</li>
-									<Link to="/#"><li>Who we are ?</li></Link>
-									<Link to="#"><li>Terms & Conditions</li></Link>
-									<Link to="#"><li>We respect your privacy </li></Link>
-									<Link to="#"><li>Contact Us</li></Link>
-									<Link to="#"><li>Shipping & Returns</li></Link>
+									<Link to="/Whower"><li>Who we are ?</li></Link>
+									
+									<Link to="/Terms"><li>Terms & Conditions</li></Link>
+									<Link to="/Privacy"><li>We respect your privacy </li></Link>
+									<Link to="/Contact"><li>Contact Us</li></Link>
+									<Link to="/Shipping"><li>Shipping & Returns</li></Link>
 									<Link to="#"><li>Authentication Certificate </li></Link>
 									<Link to="#"><li>FAQs</li></Link>
 								</ul>

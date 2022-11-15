@@ -5,7 +5,7 @@ import Header from 'components/Header';
 import { Fragment } from 'react';
 
 
-const Whoweare = () => {
+const Faq = () => {
 	
 
 	return (
@@ -25,4 +25,4 @@ const Whoweare = () => {
 	)
 }
 
-export default Whoweare;
+export default Faq;
