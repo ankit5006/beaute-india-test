@@ -1,7 +1,7 @@
 import { API_ENDPOINTS, useQuery } from "utilities";
 
-const BrandQuery = () => {
-    const { data, isLoading, isError } = useQuery(API_ENDPOINTS.BRAND)
+const BrandQuery = (shop_id) => {
+    const { data, isLoading, isError } = useQuery(`${API_ENDPOINTS.BRAND}?shop=${shop_id}`)
 
     return {
         brands: data || [],

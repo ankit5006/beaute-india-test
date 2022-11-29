@@ -2,8 +2,8 @@ import banner from 'assets/pictures/banner.png';
 import { Fragment } from 'react';
 import { API_ENDPOINTS, useQuery } from 'utilities';
 
-const Slider = () => {
-    const { data } = useQuery(API_ENDPOINTS.SLIDER_IMAGES)
+const Slider = ({ shop_id }) => {
+    const { data } = useQuery(`${API_ENDPOINTS.SLIDER_IMAGES}?shop=${shop_id}`)
 
     return (
         <div

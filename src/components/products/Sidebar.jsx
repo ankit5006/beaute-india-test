@@ -6,11 +6,11 @@ import { API_ENDPOINTS, useQuery } from 'utilities'
 import BrandQuery from './BrandQuery'
 import SizeQuery from './SizeQuery'
 
-const Sidebar = () => {
+const Sidebar = ({ shop_id }) => {
     const { data: categories } = useQuery(API_ENDPOINTS.CATEGORIES)
     let [searchParams] = useSearchParams();
     const navigate = useNavigate()
-    const { brands } = BrandQuery()
+    const { brands } = BrandQuery(shop_id)
     const { sizes } = SizeQuery()
 
     const handleNavigate = (e, key, value) => {
@@ -125,7 +125,7 @@ const Sidebar = () => {
                                         />
                                         <label htmlFor={`price_${idx}`}>
 
-                                        ₹{price.label}
+                                            ₹{price.label}
                                         </label>
                                     </li>
                                 ))
