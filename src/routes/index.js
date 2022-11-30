@@ -1,19 +1,20 @@
 /* eslint-disable import/no-anonymous-default-export */
+import Authentication from "pages/Authentication"
 import Cart from "pages/Cart"
 import Checkout from "pages/Checkout"
+import Contact from "pages/Contact"
+import Faq from "pages/Faq"
 import Home from "pages/Home"
 import Login from "pages/Login"
+import OrderComplete from "pages/OrderComplete"
 import Page404 from "pages/Page404"
+import Privacy from "pages/Privacy"
 import ProductDetail from "pages/ProductDetail"
 import Products from "pages/Products"
-import Signup from "pages/Signup"
-import Whower from "pages/Whower"
-import Terms from "pages/Terms"
-import Authentication from "pages/Authentication"
-import Faq from "pages/Faq"
-import Privacy from "pages/Privacy"
 import Shipping from "pages/Shipping"
-import Contact from "pages/Contact"
+import Signup from "pages/Signup"
+import Terms from "pages/Terms"
+import Whower from "pages/Whower"
 
 const publicRoutes = [
     { path: "*", component: Page404 },
@@ -34,6 +35,7 @@ const protectedRoutes = [
     { path: "/products/:id", component: ProductDetail },
     { path: "/cart", component: Cart },
     { path: "/checkout", component: Checkout },
+    { path: "/order-complete", component: OrderComplete },
 ]
 
 

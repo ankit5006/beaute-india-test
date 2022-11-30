@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import nounLove from "assets/pictures/noun-love-4726271.svg";
 import upi from "assets/pictures/productdetail.png";
@@ -69,7 +70,7 @@ const ProductDetail = () => {
 
                   {/* <div className=" pt-3 pe-5 mb-2" dangerouslySetInnerHTML={{ __html: product?.short_description?.name }} /> */}
 
-                  <div classname="pro-name mt-4">
+                  <div className="pro-name mt-4">
                     <span
                       className=" pt-3 b-2 pe-5"
                       style={{ fontSize: "20px" }}
@@ -134,19 +135,19 @@ const ProductDetail = () => {
                       <img src={nounLove} alt="" />
                     </button>
                   </div>
-                   <Link to="/checkout" className="button">
-                  <div className="add-to-cart-whishlist mt-5">
-                    <button
-                      className="btn-1"
-                      onClick={addToCart}
-                      disabled={!product}
-                    >
-                      Buy it now
-                    </button>
-                     
-                   
-                  </div>
-                  </Link> 
+                  <Link to="/checkout" className="button">
+                    <div className="add-to-cart-whishlist mt-5">
+                      <button
+                        className="btn-1"
+                        onClick={addToCart}
+                        disabled={!product}
+                      >
+                        Buy it now
+                      </button>
+
+
+                    </div>
+                  </Link>
                   {/* <Link to="/checkout" className="button">
                   <button
                       className="btn-1"
@@ -266,7 +267,7 @@ const ProductDetail = () => {
               <div className="container mt-4 mb-4">
                 <div className="row">
                   <br></br>
-                  <h6 class="pt-4 pb-4">Returns Policy</h6>
+                  <h6 className="pt-4 pb-4">Returns Policy</h6>
                   <br></br>
                   <p>
                     You may return most new, unopened items within 2 days of
@@ -292,7 +293,7 @@ const ProductDetail = () => {
                     processed the returned item..
                   </p>
                   <br></br>
-                  <h6 class="pt-4 pb-4">Shipping</h6>
+                  <h6 className="pt-4 pb-4">Shipping</h6>
                   <br></br>
                   <p>
                     We can ship to virtually any address in the world. Note that
@@ -312,7 +313,7 @@ const ProductDetail = () => {
                     found on its detail page. To reflect the policies of the
                     shipping companies we use, all weights will be rounded up to
                     the next full pound..
-                    
+
                   </p>
                 </div>
               </div>

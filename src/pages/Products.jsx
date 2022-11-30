@@ -97,7 +97,7 @@ const Products = () => {
 													data-bs-target="#nav-prestige "
 												/>
 												<div className="box2 ">
-													<p>ITEMS PER PAGE: 50</p>
+													<p>ITEMS PER PAGE: {data.length || 0}</p>
 													<Fragment>
 														{data.map((product, idx) => (
 															<Fragment key={idx}>
