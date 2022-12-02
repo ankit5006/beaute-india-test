@@ -14,3 +14,7 @@ export const toJson = (string) => {
         return undefined
     }
 }
+
+export const percentage = (total, percentage) => {
+    return Number(parseFloat(total * percentage / 100).toFixed(2))
+}

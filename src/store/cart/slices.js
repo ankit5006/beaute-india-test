@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { array } from '../../helpers';
 import array from 'utilities/array';
 
-const initialCoupon = { type: null, value: 0, code: null, max_amount: 0, min_amount: 0, discount_amount: 0 }
+const initialCoupon = { id: null, type: null, value: 0, code: null, max_amount: 0, min_amount: 0, discount_amount: 0 }
 const initialState = {
     totalQuantity: 0,
     data: [],

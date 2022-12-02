@@ -12,7 +12,7 @@ import DefaultAddressQuery from './DefaultAddressQuery';
 
 const OrderForm = () => {
     const navigate = useNavigate()
-    const { items, subTotal, total, totalQuantity } = useCart()
+    const { items, subTotal, total, totalQuantity, discount, coupon } = useCart()
     const { isUserLoggedIn, user } = useUser()
     const { info: shop } = useShop()
     const dispatch = useDispatch()
@@ -29,12 +29,12 @@ const OrderForm = () => {
             "subtotal": item?.price * item?.quantity
         })),
         "status": 1,
-        "amount": total,
+        "amount": total - discount,
         "sales_tax": 0,
-        "coupon_id": 1,
+        "coupon_id": coupon?.id,
         "shop_id": shop?.id,
-        "paid_total": total,
-        "total": total,
+        "paid_total": total - discount,
+        "total": total - discount,
         "customer_contact": user?.contact || '0123456789',
         "payment_gateway": payMethod,
         "billing_address": {
@@ -59,6 +59,7 @@ const OrderForm = () => {
                 if (response?.success) {
                     notification('success', response?.message)
                     dispatch(clear())
+                    navigate('/order-complete')
                 }
             })
     }
@@ -192,12 +193,15 @@ const OrderForm = () => {
                                         </div>
                                     ))}
 
+                                    <div className="product-price">
+                                        <h5>Discount</h5><span>₹{discount}</span>
+                                    </div>
 
                                     <div className="mb-2 mt-4">
                                         <div className="new2"></div>
                                     </div>
                                     <div className="product-price">
-                                        <h5 style={{ fontSize: "20px !important" }}>Sub Total</h5><span style={{ fontSize: "20px" }}>₹ {subTotal}</span>
+                                        <h5 style={{ fontSize: "20px !important" }}>Sub Total</h5><span style={{ fontSize: "20px" }}>₹ {subTotal - discount}</span>
                                     </div>
                                     <p>including ({(subTotal * 18) / 100}) in taxes</p>
                                 </div>
