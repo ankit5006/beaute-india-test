@@ -8,8 +8,10 @@ const QuantityUpdate = ({ quantity, id }) => {
 
 	const handleIncrement = () => {
 		let qty = counter + 1;
-		setCounter(qty);
-		dispatch(update(id, qty));
+		if (qty <= 10) {
+			setCounter(qty);
+			dispatch(update(id, qty));
+		}
 	};
 	const handleDecrement = () => {
 		let qty = counter - 1;
