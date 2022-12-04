@@ -59,7 +59,8 @@ const OrderForm = () => {
                 if (response?.success) {
                     notification('success', response?.message)
                     dispatch(clear())
-                    navigate('/order-complete')
+                    // navigate(`/order-complete?order_id=${response?.data?.id}`)
+                    navigate(`/`)
                 }
             })
     }
@@ -110,7 +111,7 @@ const OrderForm = () => {
             handler: function (response) {
                 if (response?.razorpay_payment_id) {
                     dispatch(clear())
-                    navigate('/order-complete')
+                    navigate('/')
                 }
             },
             prefill: {

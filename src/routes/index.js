@@ -15,6 +15,7 @@ import Shipping from "pages/Shipping"
 import Signup from "pages/Signup"
 import Terms from "pages/Terms"
 import Whower from "pages/Whower"
+import Wishlist from "pages/Wishlist"
 
 const publicRoutes = [
     { path: "*", component: Page404 },
@@ -36,6 +37,7 @@ const protectedRoutes = [
     { path: "/cart", component: Cart },
     { path: "/checkout", component: Checkout },
     { path: "/order-complete", component: OrderComplete },
+    { path: "/wishlist", component: Wishlist },
 ]
 
 

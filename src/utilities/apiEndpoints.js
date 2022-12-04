@@ -20,6 +20,7 @@ const API_ENDPOINTS = {
     BRAND: 'brand',
     SIZE: 'size',
     NEWSLETTER: 'newsletter',
-    COUPON: 'get_coupons'
+    COUPON: 'get_coupons',
+    WISHLIST: 'wishlist'
 }
 export default API_ENDPOINTS
