@@ -63,7 +63,7 @@ function Header() {
 			<div className="navhead">
 				<div className="logoo">
 					<Link to="/">
-					<img src={logo} style={{height: "3rem"}} alt="" />
+						<img src={logo} style={{ height: "3rem" }} alt="" />
 					</Link>
 
 				</div>
@@ -77,7 +77,6 @@ function Header() {
 											<input
 												type="text"
 												className="input-search"
-												placeholder=""
 												value={search}
 												onChange={e => setSearch(e.target.value)}
 											/>
@@ -131,7 +130,7 @@ function Header() {
 					</li>
 				</ul>
 
-				<div className="hamburger" onClick="myFunction()">
+				<div className="hamburger">
 					<div></div>
 					<div></div>
 					<div></div>

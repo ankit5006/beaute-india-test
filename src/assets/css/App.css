@@ -453,7 +453,7 @@ h6 {
 /* Product content section */
 
 .main-content h1 {
-  margin: 50px 0 50px 20px;
+  /* margin: 50px 0 50px 20px; */
   font-size: 40px;
   color: #000;
   font-weight: lighter;
@@ -465,7 +465,7 @@ h6 {
 }
 
 .sorting-section {
-  max-height: 100px;
+  /* max-height: 100px; */
   box-shadow: 0px 3px 6px #00000029;
 }
 
@@ -557,7 +557,7 @@ h6 {
 
 @media screen and (max-width: 1200px) {
   .main-content h1 {
-    margin: 50px 0 50px 20px;
+    /* margin: 50px 0 50px 20px; */
     font-size: 40px !important;
   }
 

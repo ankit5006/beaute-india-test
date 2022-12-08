@@ -50,7 +50,7 @@ const Sidebar = ({ shop_id }) => {
     return (
         <div className="scroll-div-side">
             <div className="category-filter ">
-                <span onClick="openside()">
+                <span>
                     <img src={cancelImg} alt="" />
                 </span>
 
@@ -61,7 +61,7 @@ const Sidebar = ({ shop_id }) => {
                     </li>
 
                     {categories.map((category, idx) => (
-                        <li className='mt-3 ps-3 cat-filt'>
+                        <li className='mt-3 ps-3 cat-filt' key={idx}>
                             <a onClick={(e) => handleNavigate(e, 'category', category?.id)}>
                                 {category?.name}
                             </a>
