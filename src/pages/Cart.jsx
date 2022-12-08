@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import deleteImg from 'assets/pictures/delete.png';
 import QuantityUpdate from 'components/cart/QuantityUpdate';
 import { CouponForm } from 'components/coupon';
@@ -5,15 +6,26 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { ProductCard, ProductQuery } from 'components/products';
 import { useCart } from 'hooks';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { remove, removeDiscount } from 'store/cart/actions';
 
 const Cart = () => {
 	const dispatch = useDispatch()
-	const { items, subTotal, discount, coupon } = useCart()
+	const { items, subTotal, discount, coupon, totalQuantity } = useCart()
 	const { data: products } = ProductQuery()
+
+	useEffect(() => {
+		if (totalQuantity === 0) {
+			dispatch(removeDiscount())
+		}
+	}, [totalQuantity])
+
+
+	const handleRemove = (id) => {
+		dispatch(remove(id))
+	}
 
 	return (
 		<Fragment>
@@ -46,7 +58,7 @@ const Cart = () => {
 
 																		<QuantityUpdate quantity={item?.quantity} id={item?.id} />
 																		<div className='delete-img' >
-																			<img src={deleteImg} alt="" style={{ marginLeft: "2rem" }} onClick={() => dispatch(remove(item.id))} />
+																			<img src={deleteImg} alt="" style={{ marginLeft: "2rem" }} onClick={() => handleRemove(item?.id)} />
 																		</div>
 
 																	</div>
