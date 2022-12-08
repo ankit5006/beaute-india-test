@@ -1,58 +1,57 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import filterImg from 'assets/pictures/filter.png';
-import hrView from 'assets/pictures/hr-view.svg';
-import squareView from 'assets/pictures/square-view.svg';
+import filterImg from "assets/pictures/filter.png";
+import hrView from "assets/pictures/hr-view.svg";
+import squareView from "assets/pictures/square-view.svg";
 
 import StickyBox from "react-sticky-box";
 
 import Footer from 'components/Footer';
-import Header from 'components/Header';
+import Header from "components/Header";
 import {
 	ProductCard,
 	ProductCardListView,
 	ProductQuery,
 	Sidebar,
 	Slider
-} from 'components/products';
-import { useShop } from 'hooks';
-import { Fragment, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-
+} from "components/products";
+import { useShop } from "hooks";
+import { Fragment, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Products = () => {
-	const { isLoggedIn, info } = useShop()
-	const navigate = useNavigate()
-	let [searchParams] = useSearchParams()
+	const { isLoggedIn, info } = useShop();
+	const navigate = useNavigate();
+	let [searchParams] = useSearchParams();
 
-	const shop_id = info?.id || 0
+	const shop_id = info?.id || 0;
 
 	useEffect(() => {
 		if (!isLoggedIn) {
-			navigate('/')
+			navigate("/");
 		}
-	}, [isLoggedIn])
-	const { data } = ProductQuery()
+	}, [isLoggedIn]);
+	const { data } = ProductQuery();
 
 	const handleNavigate = (e, key, value) => {
-		const Obj = {}
+		const Obj = {};
 		for (const [key, value] of searchParams) {
-			if (key === 'price') {
-				Object.assign(Obj, { 'price_min': value[0] })
-				Object.assign(Obj, { 'price_max': value[1] })
+			if (key === "price") {
+				Object.assign(Obj, { price_min: value[0] });
+				Object.assign(Obj, { price_max: value[1] });
 			} else {
-				Object.assign(Obj, { [key]: value })
+				Object.assign(Obj, { [key]: value });
 			}
 		}
-		if (key === 'price') {
-			Object.assign(Obj, { 'price_min': value[0] })
-			Object.assign(Obj, { 'price_max': value[1] })
+		if (key === "price") {
+			Object.assign(Obj, { price_min: value[0] });
+			Object.assign(Obj, { price_max: value[1] });
 		} else {
-			Object.assign(Obj, { [key]: value })
+			Object.assign(Obj, { [key]: value });
 		}
 		// Object.assign(Obj, { [key]: value })
-		const query = new URLSearchParams(Obj).toString()
+		const query = new URLSearchParams(Obj).toString();
 		navigate(`/products?${query}`);
-	}
+	};
 
 	return (
 		<Fragment>
