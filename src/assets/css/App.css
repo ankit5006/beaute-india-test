@@ -994,6 +994,10 @@ form h6 {
   font-weight: bold;
 }
 
+.product-details a {
+  text-decoration: none !important;
+}
+
 .quantity h5 {
   font-size: 25px;
   font-weight: lighter;
