@@ -7,6 +7,7 @@ import QuantityUpdate from "components/cart/QuantityUpdate";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import { ProductCard, ProductQuery } from "components/products";
+import { addToWishlist } from "components/wishlist";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -136,7 +137,7 @@ const ProductDetail = () => {
                       Add to cart
                     </button>
                     <button className="btn-2">
-                      <img src={nounLove} alt="" />
+                      <img src={nounLove} alt="" onClick={() => addToWishlist(product?.id)} />
                     </button>
                   </div>
                   <Link to="/checkout" className="button">

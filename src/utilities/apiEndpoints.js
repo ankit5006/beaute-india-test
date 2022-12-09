@@ -21,6 +21,8 @@ const API_ENDPOINTS = {
     SIZE: 'size',
     NEWSLETTER: 'newsletter',
     COUPON: 'get_coupons',
-    WISHLIST: 'wishlist'
+    ADD_WISHLIST: 'add_cart',
+    WISHLIST: 'wishlist',
+    DELETE_WISHLIST: 'delete_cart',
 }
 export default API_ENDPOINTS

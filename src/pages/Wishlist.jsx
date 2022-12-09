@@ -5,9 +5,22 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { SpinLoader } from 'components/ui';
 import { WishlistQuery } from 'components/wishlist';
+import { mutate } from 'swr';
+import { API_ENDPOINTS, request } from 'utilities';
+import notification from 'utilities/notification';
 
 const Wishlist = () => {
     const { data, isLoading } = WishlistQuery()
+
+    const onDelete = (id) => {
+        request.all(`${API_ENDPOINTS.DELETE_WISHLIST}/${id}`)
+            .then(response => {
+                if (response?.success) {
+                    notification('success', response?.message)
+                    mutate(API_ENDPOINTS.WISHLIST)
+                }
+            })
+    }
 
     return (
         <Fragment>
@@ -51,6 +64,7 @@ const Wishlist = () => {
                                                                                     <img
                                                                                         src={deleteImg}
                                                                                         alt="" style={{ marginLeft: "2rem" }}
+                                                                                        onClick={() => onDelete(item?.id)}
                                                                                     />
                                                                                 </div>
 
