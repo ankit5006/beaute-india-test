@@ -4,7 +4,7 @@ import searchIcon from 'assets/pictures/search.svg';
 import whishlist from 'assets/pictures/whishlist.svg';
 import { useCart, useUser } from 'hooks';
 import { Fragment, useState } from 'react';
-import { NavDropdown } from "react-bootstrap";
+import { Badge, NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { logout } from 'store/auth/actions';
@@ -93,18 +93,24 @@ function Header() {
 					</li>
 					<li>
 
-						<Link to="/productdetail">
+						<Link to="/wishlist">
 							<img src={whishlist} className="heart-img" alt="" />
 						</Link>
 
 					</li>
 					<li>
 						<Link to="/cart" className=''>
-							<div className='text-center'>
+							{/* <div className='text-center'>
 								<span style={{ fontSize: 12 }} className=' bg-light p-1 rounded'>
 									{totalQuantity}
 								</span>
-							</div>
+							</div> */}
+							{totalQuantity > 0 && (
+								<div>
+									<Badge bg="dark">{totalQuantity}</Badge>
+								</div>
+							)}
+
 							<img src={cart} className="cart-img" alt="" />
 						</Link>
 					</li>
