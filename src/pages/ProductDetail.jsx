@@ -47,7 +47,11 @@ const ProductDetail = () => {
             <div className="row ">
               <div className="col-lg-5 ">
                 <div className="main-product">
-                  <img src={product?.image || ractangleImage} alt="" />
+                  <img
+                    src={product?.image || ractangleImage}
+                    alt=""
+                    className="pro-detail-img"
+                  />
                 </div>
                 {/* <div className="more-product text-center mt-3">
 									<img src={ractangleImage} alt="" />
@@ -144,8 +148,6 @@ const ProductDetail = () => {
                       >
                         Buy it now
                       </button>
-
-
                     </div>
                   </Link>
                   {/* <Link to="/checkout" className="button">
@@ -313,7 +315,6 @@ const ProductDetail = () => {
                     found on its detail page. To reflect the policies of the
                     shipping companies we use, all weights will be rounded up to
                     the next full pound..
-
                   </p>
                 </div>
               </div>
