@@ -964,6 +964,11 @@ form h6 {
 
 /* PRoduct detail page  */
 
+.pro-detail-img {
+  height: 600px !important;
+  object-fit: contain !important;
+}
+
 .main-product img {
   width: 100%;
 }
