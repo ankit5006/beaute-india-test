@@ -75,13 +75,23 @@ const ProductCard = ({ product }) => {
                         {removeHtmlTags(product?.brand)}
                     </p> */}
           <div className="price-buy pt-3 pb-3">
+            <del>
+              <Link to={`/products/${product?.id}`}>
+                <div className="price">₹ {product?.normal_price}</div>
+              </Link>
+            </del>
             <Link to={`/products/${product?.id}`}>
-              <div className="price">₹ {product?.normal_price}</div>
+              <div className="price">₹ {product?.sale_price}</div>
             </Link>
 
             <div className="d-flex">
               <button className="border-0 p-0">
-                <img src={whishlist} alt="" style={{ height: 18 }} onClick={() => addToWishlist(product?.id)} />
+                <img
+                  src={whishlist}
+                  alt=""
+                  style={{ height: 18 }}
+                  onClick={() => addToWishlist(product?.id)}
+                />
               </button>
               <button className="border-0 p-0" onClick={addToCart}>
                 <img src={cart} alt="" style={{ height: 18 }} />

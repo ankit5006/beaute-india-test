@@ -3,6 +3,7 @@ import downArrow from "assets/pictures/arrow-down.svg";
 import cancelImg from "assets/pictures/Cancel-icon.png";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { API_ENDPOINTS, useQuery } from "utilities";
+import { Link } from "react-router-dom";
 import BrandQuery from "./BrandQuery";
 import SizeQuery from "./SizeQuery";
 
@@ -47,11 +48,18 @@ const Sidebar = ({ shop_id }) => {
   ];
 
   return (
-    <div className="scroll-div-side">
+    <div className="scroll-div-side pb-5">
       <div className="category-filter ">
         <span>
           <img src={cancelImg} alt="" />
         </span>
+
+        <Link to={`/products`}>
+          {" "}
+          <button class=" btn btn-dark mb-5" Linkto="">
+            Clear Filter
+          </button>
+        </Link>
 
         <ul className="nav flex-column">
           <li>
