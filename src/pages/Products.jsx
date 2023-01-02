@@ -2,11 +2,13 @@
 import filterImg from "assets/pictures/filter.png";
 import hrView from "assets/pictures/hr-view.svg";
 import squareView from "assets/pictures/square-view.svg";
-
+import { useState } from "react";
 import StickyBox from "react-sticky-box";
 
 import Footer from "components/Footer";
 import Header from "components/Header";
+import Pagination from "components/pagination/Pagination";
+
 import {
   ProductCard,
   ProductCardListView,
@@ -22,6 +24,8 @@ const Products = () => {
   const { isLoggedIn, info } = useShop();
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(30);
 
   const shop_id = info?.id || 0;
 
@@ -52,6 +56,10 @@ const Products = () => {
     const query = new URLSearchParams(Obj).toString();
     navigate(`/products?${query}`);
   };
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentProducts = data.slice(firstPostIndex, lastPostIndex);
 
   return (
     <Fragment>
@@ -103,7 +111,7 @@ const Products = () => {
                             />
                           </div>
                           <div className="box2 ">
-                            <p>ITEMS PER PAGE: {data.length || 0}</p>
+                            <p>ITEMS PER PAGE: {currentProducts.length || 0}</p>
                           </div>
                           <div className="box3 ">
                             <select
@@ -139,9 +147,9 @@ const Products = () => {
                           >
                             <div className="container mt-4 mb-4">
                               <div className="row">
-                                {data.length > 0 ? (
+                                {currentProducts.length > 0 ? (
                                   <Fragment>
-                                    {data.map((product, idx) => (
+                                    {currentProducts.map((product, idx) => (
                                       <Fragment key={idx}>
                                         <ProductCard product={product} />
                                       </Fragment>
@@ -152,6 +160,19 @@ const Products = () => {
                                     No product found
                                   </div>
                                 )}
+                              </div>
+                              <div
+                                style={{
+                                  display: "block !important",
+                                  margin: "0 auto !important",
+                                }}
+                              >
+                                <Pagination
+                                  totalPosts={data.length}
+                                  postsPerPage={postsPerPage}
+                                  setCurrentPage={setCurrentPage}
+                                  currentProducts={currentProducts}
+                                />
                               </div>
                             </div>
                           </div>
@@ -165,7 +186,7 @@ const Products = () => {
                             <div className="container mt-4 mb-4">
                               {data.length > 0 ? (
                                 <Fragment>
-                                  {data.map((product, idx) => (
+                                  {currentProducts.map((product, idx) => (
                                     <Fragment key={idx}>
                                       <ProductCardListView product={product} />
                                     </Fragment>
@@ -176,6 +197,17 @@ const Products = () => {
                                   No product found
                                 </div>
                               )}
+                            </div>
+                            <div
+                              className="pagination-div"
+                              style={{ float: "center" }}
+                            >
+                              <Pagination
+                                totalPosts={data.length}
+                                postsPerPage={postsPerPage}
+                                setCurrentPage={setCurrentPage}
+                                currentProducts={currentProducts}
+                              />
                             </div>
                           </div>
                         </div>
