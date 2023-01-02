@@ -13,7 +13,7 @@ const Pagination = ({
     pages.push(i);
   }
   return (
-    <div style={{ display: "block !important", margin: "0 auto !important" }}>
+    <div>
       {pages.map((page, index) => {
         return (
           <button

@@ -4,7 +4,8 @@ import hrView from "assets/pictures/hr-view.svg";
 import squareView from "assets/pictures/square-view.svg";
 import { useState } from "react";
 import StickyBox from "react-sticky-box";
-
+import "assets/css/App.css";
+import "assets/css/index.css";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import Pagination from "components/pagination/Pagination";
@@ -161,12 +162,7 @@ const Products = () => {
                                   </div>
                                 )}
                               </div>
-                              <div
-                                style={{
-                                  display: "block !important",
-                                  margin: "0 auto !important",
-                                }}
-                              >
+                              <div className="page-number">
                                 <Pagination
                                   totalPosts={data.length}
                                   postsPerPage={postsPerPage}
@@ -198,10 +194,7 @@ const Products = () => {
                                 </div>
                               )}
                             </div>
-                            <div
-                              className="pagination-div"
-                              style={{ float: "center" }}
-                            >
+                            <div className="page-number">
                               <Pagination
                                 totalPosts={data.length}
                                 postsPerPage={postsPerPage}

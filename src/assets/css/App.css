@@ -2066,3 +2066,18 @@ select option[value=""] {
   border-radius: 5px;
   padding: 0px 10px;
 }
+
+/* Pagination */
+
+.page-number {
+  position: absolute !important;
+  left: 50% !important;
+  margin: 20px 0 0 0;
+}
+
+@media screen and (max-width: 767px) {
+  .page-number {
+    position: absolute !important;
+    left: 25% !important;
+  }
+}
