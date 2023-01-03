@@ -157,8 +157,8 @@ const Products = () => {
                                     ))}
                                   </Fragment>
                                 ) : (
-                                  <div className="alert alert-info">
-                                    No product found
+                                  <div className="alert ">
+                                    {/* No product found */}
                                   </div>
                                 )}
                               </div>
@@ -189,8 +189,8 @@ const Products = () => {
                                   ))}
                                 </Fragment>
                               ) : (
-                                <div className="alert alert-info">
-                                  No product found
+                                <div className="alert ">
+                                  {/* No product found */}
                                 </div>
                               )}
                             </div>
