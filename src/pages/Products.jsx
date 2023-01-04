@@ -2,7 +2,7 @@
 import filterImg from "assets/pictures/filter.png";
 import hrView from "assets/pictures/hr-view.svg";
 import squareView from "assets/pictures/square-view.svg";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import StickyBox from "react-sticky-box";
 import "assets/css/App.css";
 import "assets/css/index.css";
