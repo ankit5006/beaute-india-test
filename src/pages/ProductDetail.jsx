@@ -10,6 +10,7 @@ import { ProductCard, ProductQuery } from "components/products";
 import { addToWishlist } from "components/wishlist";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { add } from "store/cart/actions";
 import notification from "utilities/notification";
@@ -38,6 +39,10 @@ const ProductDetail = () => {
     dispatch(add(data));
     notification("success", "Product Added To Cart");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Fragment>
@@ -137,7 +142,11 @@ const ProductDetail = () => {
                       Add to cart
                     </button>
                     <button className="btn-2">
-                      <img src={nounLove} alt="" onClick={() => addToWishlist(product?.id)} />
+                      <img
+                        src={nounLove}
+                        alt=""
+                        onClick={() => addToWishlist(product?.id)}
+                      />
                     </button>
                   </div>
                   <Link to="/checkout" className="button">

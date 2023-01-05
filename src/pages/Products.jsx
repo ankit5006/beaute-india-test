@@ -2,7 +2,7 @@
 import filterImg from "assets/pictures/filter.png";
 import hrView from "assets/pictures/hr-view.svg";
 import squareView from "assets/pictures/square-view.svg";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import StickyBox from "react-sticky-box";
 import "assets/css/App.css";
 import "assets/css/index.css";
@@ -21,21 +21,30 @@ import { useShop } from "hooks";
 import { Fragment, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+let PageSize = 30;
+
 const Products = () => {
   const { isLoggedIn, info } = useShop();
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(30);
+  const { data } = ProductQuery();
 
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return data.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage,data]);
+  console.log(currentTableData)
   const shop_id = info?.id || 0;
 
   useEffect(() => {
+
     if (!isLoggedIn) {
       navigate("/");
     }
   }, [isLoggedIn]);
-  const { data } = ProductQuery();
+  
 
   const handleNavigate = (e, key, value) => {
     const Obj = {};
@@ -58,9 +67,7 @@ const Products = () => {
     navigate(`/products?${query}`);
   };
 
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentProducts = data.slice(firstPostIndex, lastPostIndex);
+
 
   return (
     <Fragment>
@@ -112,7 +119,7 @@ const Products = () => {
                             />
                           </div>
                           <div className="box2 ">
-                            <p>ITEMS PER PAGE: {currentProducts.length || 0}</p>
+                            <p>ITEMS PER PAGE: {currentTableData.length || 0}</p>
                           </div>
                           <div className="box3 ">
                             <select
@@ -148,26 +155,27 @@ const Products = () => {
                           >
                             <div className="container mt-4 mb-4">
                               <div className="row">
-                                {currentProducts.length > 0 ? (
+                                {currentTableData.length > 0 ? (
                                   <Fragment>
-                                    {currentProducts.map((product, idx) => (
+                                    {currentTableData.map((product, idx) => (
                                       <Fragment key={idx}>
                                         <ProductCard product={product} />
                                       </Fragment>
                                     ))}
                                   </Fragment>
                                 ) : (
-                                  <div className="alert alert-info">
+                                  <div className="alert ">
                                     No product found
                                   </div>
                                 )}
                               </div>
                               <div className="page-number">
                                 <Pagination
-                                  totalPosts={data.length}
-                                  postsPerPage={postsPerPage}
-                                  setCurrentPage={setCurrentPage}
-                                  currentProducts={currentProducts}
+                                  
+                                  totalCount={data.length}
+                                  currentPage={currentPage}
+                                  pageSize={PageSize}
+                                  onPageChange={page => setCurrentPage(page)}
                                 />
                               </div>
                             </div>
@@ -180,27 +188,28 @@ const Products = () => {
                             aria-labelledby="nav-prestige-tab"
                           >
                             <div className="container mt-4 mb-4">
-                              {data.length > 0 ? (
+                              {currentTableData.length > 0 ? (
                                 <Fragment>
-                                  {currentProducts.map((product, idx) => (
+                                  {currentTableData.map((product, idx) => (
                                     <Fragment key={idx}>
                                       <ProductCardListView product={product} />
                                     </Fragment>
                                   ))}
                                 </Fragment>
                               ) : (
-                                <div className="alert alert-info">
-                                  No product found
+                                <div className="alert ">
+                                  {/* No product found */}
                                 </div>
                               )}
                             </div>
                             <div className="page-number">
-                              <Pagination
-                                totalPosts={data.length}
-                                postsPerPage={postsPerPage}
-                                setCurrentPage={setCurrentPage}
-                                currentProducts={currentProducts}
-                              />
+                            <Pagination
+                    
+                                  totalCount={data.length}
+                                  currentPage={currentPage}
+                                  pageSize={PageSize}
+                                  onPageChange={page => setCurrentPage(page)}
+                                />
                             </div>
                           </div>
                         </div>
