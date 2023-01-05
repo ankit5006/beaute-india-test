@@ -6,9 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { clear } from 'store/cart/actions';
 import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
-import { toJson } from 'utilities/str';
+import { loadScript, toJson } from 'utilities/str';
 import DefaultAddressQuery from './DefaultAddressQuery';
-
 
 const OrderForm = () => {
     const navigate = useNavigate()
@@ -57,57 +56,34 @@ const OrderForm = () => {
         request.post(API_ENDPOINTS.ORDER, values)
             .then(response => {
                 if (response?.success) {
-                    notification('success', response?.message)
-                    dispatch(clear())
-                    // navigate(`/order-complete?order_id=${response?.data?.id}`)
-                    navigate(`/`)
+                    if (payMethod === 'razorPay') {
+                        displayRazorpay(response?.data)
+                    } else {
+                        notification('success', response?.message)
+                        dispatch(clear())
+                        // navigate(`/order-complete?order_id=${response?.data?.id}`)
+                        navigate(`/`)
+                    }
                 }
             })
     }
 
-    // rzp_test_9rOLNbfeH7Rmrw
-    // dS9VvDqnRVwf2dXgQgN1rnsg
-
     const formik = useFormik({ initialValues, enableReinitialize: true, onSubmit })
-    console.warn("initialValues", initialValues)
-    console.warn("initialValues", initialValues.total)
 
-    function loadScript(src) {
-        return new Promise((resolve) => {
-            const script = document.createElement('script')
-            script.src = src
-            script.onload = () => {
-                resolve(true)
-            }
-            script.onerror = () => {
-                resolve(false)
-            }
-            document.body.appendChild(script)
-        })
-    }
-
-    async function displayRazorpay() {
+    async function displayRazorpay(order) {
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
         if (!res) {
-            alert('Razorpay SDK failed to load. Are you online?')
+            notification('error', 'Razorpay SDK failed to load. Are you online?')
             return
         }
 
-        // const data = await fetch('http://localhost:3003/api/razorpay', { method: 'GET' }).then((t) =>
-        // 	t.json()
-        // )
-
-        // console.log(data)
-
         const options = {
-            key: 'rzp_test_1DKpSUIdqguma0',
-            currency: "INR",
-            amount: (initialValues.total) * 100,
-            // order_id: "10199",
+            key: process.env.REACT_APP_RAZORPAY_KEY,
+            currency: process.env.REACT_APP_RAZORPAY_CURRENCY,
+            amount: (order?.total) * 100,
             name: 'BEAUTE INDIA',
-            description: 'Thank you for Purchasing',
-            // image: 'http://localhost:1337/logo.svg',
+            description: order?.id,
             handler: function (response) {
                 if (response?.razorpay_payment_id) {
                     dispatch(clear())
@@ -117,9 +93,10 @@ const OrderForm = () => {
             prefill: {
                 name: user.name,
                 email: user.email,
-                phone_number: user.customer_contact
+                // phone_number: user.customer_contact
             }
         }
+
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
     }
@@ -206,10 +183,9 @@ const OrderForm = () => {
                                     </div>
                                     <p>including ({(subTotal * 18) / 100}) in taxes</p>
                                 </div>
-                                {payMethod === 'razorPay' ? <button type='submit' onClick={displayRazorpay} disabled={!isDisabled} className="payment-btn mt-5" > Proceed to Payment</button>
-                                    : <button type='submit' disabled={!isDisabled} onClick={formik.handleSubmit} className="payment-btn mt-5" > Proceed to Payment</button>
+                                <button type='submit' disabled={!isDisabled} onClick={formik.handleSubmit} className="payment-btn mt-5" > Proceed to Payment</button>
 
-                                }
+
                             </div>
                         </div>
                     </div>
