@@ -78,11 +78,12 @@ const ProductCard = ({ product }) => {
             <Link to={`/products/${product?.id}`}>
               <div className="price">₹ {product?.sale_price}</div>
             </Link>
-            <del>
+            {product?.normal_price> 0 ?(<del>
               <Link to={`/products/${product?.id}`}>
                 <div className="price">₹ {product?.normal_price}</div>
               </Link>
-            </del>
+            </del>):""}
+            
 
             <div className="d-flex">
               <button className="border-0 p-0">

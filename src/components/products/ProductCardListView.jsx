@@ -103,10 +103,14 @@ const ProductCardListView = ({ product }) => {
                    <div className='d-flex flex-row align-items-center'>
                     <div className="price-buy pt-3 pb-3 me-5">
                     <Link to={`/products/${product?.id}`}>
-                    <div className="price">
-                        ₹ {product?.normal_price}
-                        </div> 
+                        <div className="price">₹ {product?.sale_price}</div>
+                    </Link>
+                    {product?.normal_price> 0 ?(
+                        <del>
+                        <Link to={`/products/${product?.id}`}>
+                            <div className="price">₹ {product?.normal_price}</div>
                         </Link>
+                        </del>):""}
                        
                         <div className='d-flex ms-3 me-3'>
                             <button className='border-0 p-0 ms-3 me-3'>

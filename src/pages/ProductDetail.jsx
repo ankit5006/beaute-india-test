@@ -22,7 +22,7 @@ const ProductDetail = () => {
   const { data: carts } = useSelector((state) => state.cart);
   const currentItem = carts.find((item) => item?.id === product?.id);
   const { data: products } = ProductQuery();
-
+  console.log(product)
   const addToCart = () => {
     const data = {
       id: product?.id || 0,
@@ -106,11 +106,12 @@ const ProductDetail = () => {
 
                   {product?.sale_price > 0 ? (
                     <Fragment>
-                      <del>
+                      {product?.normal_price> 0 ?(<del>
                         <h5 style={{ fontSize: "18px" }}>
                           ₹ {product?.normal_price}
                         </h5>
-                      </del>
+                      </del>):""}
+                      
                       <h4 style={{ fontSize: "24px" }} className="mb-3">
                         ₹ {product?.sale_price}
                       </h4>

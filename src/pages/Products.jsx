@@ -165,7 +165,7 @@ const Products = () => {
                                   </Fragment>
                                 ) : (
                                   <div className="alert ">
-                                    No product found
+                                    {/* No product found */}
                                   </div>
                                 )}
                               </div>
