@@ -85,6 +85,7 @@ const ProductCardListView = ({ product }) => {
                     />
               </div>
               <div className='col-sm-8'>
+                {console.log(product)}
               <h6 className="card-title  mb-2" >
                         <Link to={`/products/${product?.id}`}>
 

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import BrandQuery from "./BrandQuery";
 import SizeQuery from "./SizeQuery";
 
-const Sidebar = ({ shop_id }) => {
+const Sidebar = ({ shop_id, category }) => {
   const { data: categories } = useQuery(API_ENDPOINTS.CATEGORIES);
   let [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -66,18 +66,18 @@ const Sidebar = ({ shop_id }) => {
             <a>
               <img src={downArrow} alt="" />
               &nbsp;
-              <u className="cathead">Catogories</u>
+              <u className="cathead">Categories</u>
             </a>
           </li>
 
-          {categories.map((category, idx) => (
+          { Object.keys(category).map((name, idx) => (
             <li
               className="mt-3 ps-3 cat-filt"
               style={{ cursor: "pointer" }}
               key={idx}
             >
-              <a onClick={(e) => handleNavigate(e, "category", category?.id)}>
-                {category?.name}
+              <a onClick={(e) => handleNavigate(e, "category", category[name])}>
+                {name}
               </a>
             </li>
           ))}

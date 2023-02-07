@@ -29,13 +29,18 @@ const Products = () => {
   let [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
   const { data } = ProductQuery();
-
+  const category_arr= {}
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage,data]);
-  console.log(currentTableData)
+
+    {data.map((product, idx) => (
+    category_arr[product.category.name] = product.category.id
+    
+  ))}
+
   const shop_id = info?.id || 0;
 
   useEffect(() => {
@@ -80,7 +85,7 @@ const Products = () => {
           <div className="col-lg-2 col-md-3 sidebar-contect">
             <StickyBox offsetTop={10} offsetBottom={40}>
               <div className="" id="side">
-                {shop_id && <Sidebar shop_id={shop_id} />}
+                {shop_id && <Sidebar shop_id={shop_id} category={category_arr}/>}
               </div>
             </StickyBox>
           </div>
@@ -191,6 +196,7 @@ const Products = () => {
                               {currentTableData.length > 0 ? (
                                 <Fragment>
                                   {currentTableData.map((product, idx) => (
+                                    
                                     <Fragment key={idx}>
                                       <ProductCardListView product={product} />
                                     </Fragment>
