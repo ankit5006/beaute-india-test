@@ -37,7 +37,7 @@ const Products = () => {
   }, [currentPage,data]);
 
     {data.map((product, idx) => (
-    category_arr[product.category.name] = product.category.id
+    category_arr[product?.category?.name] = product?.category?.id
     
   ))}
 
