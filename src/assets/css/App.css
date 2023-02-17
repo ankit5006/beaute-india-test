@@ -1611,8 +1611,19 @@ input[type="number"] {
   font-weight: bold;
   border: 1px solid #000;
 }
-
 .submit-section button:hover {
+  background: #fff;
+  color: #000;
+}
+.address-section button {
+  padding: 10px 90px;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #000;
+}
+.address-section button:hover {
   background: #fff;
   color: #000;
 }

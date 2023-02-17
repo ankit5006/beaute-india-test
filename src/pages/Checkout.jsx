@@ -24,7 +24,7 @@ const Checkout = () => {
 									<Fragment>
 
 										<h2 style={{fontSize:"26px"}}>Delivery address</h2>
-										<AddressForm editId={id} />
+										{/* <AddressForm editId={id} /> */}
 									</Fragment>
 								)}
 

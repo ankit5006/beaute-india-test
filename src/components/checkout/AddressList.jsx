@@ -1,14 +1,22 @@
 /* eslint-disable no-unused-vars */
 import editIcon from 'assets/pictures/Icon material-edit.svg';
+import addIcon from 'assets/pictures/Icon-ionic-ios-add.svg';
 import { Fragment, useState } from "react";
 import AddressQuery from './AddressQuery';
 import EditAddress from './EditAddress';
+import { Modal, Button } from "react-bootstrap";
+import AddressForm from './AddressForm';
+import AddAddress from './AddAddress';
 
 const AddressList = ({ idState }) => {
     const { data } = AddressQuery()
     const [show, setShow] = useState(false);
+    const [showAddressModal, setShowAddressModal] = useState(false);
     const [id, setId] = idState
 
+    const handleAdd = () => {
+        setShowAddressModal(true)
+    }
     const handleEdit = (id) => {
         setId(id)
         setShow(true)
@@ -18,7 +26,7 @@ const AddressList = ({ idState }) => {
         <Fragment>
             <div className="address-section">
                 <span><h3>Saved Address</h3></span>
-                <span> <img src="/pictures/Icon ionic-ios-add.svg" alt="" /> Add new address</span>
+                <button onClick={() => handleAdd()} ><span> <img style={{width:"10px", height:"10px"}} src= {addIcon} alt="" /> Add new address</span></button>
             </div>
 
             <div className="address-edit-section row">
@@ -55,7 +63,7 @@ const AddressList = ({ idState }) => {
                     <p className="text-center my-3">No Address Found</p>
                 )}
             </div>
-
+            <AddAddress modelState={[showAddressModal, setShowAddressModal]} />
             <EditAddress modelState={[show, setShow]} id={id} />
         </Fragment>
     )
