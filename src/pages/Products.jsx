@@ -36,10 +36,10 @@ const Products = () => {
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage,data]);
 
-  //   {data.map((product, idx) => (
-  //   category_arr[product.category.name] = product.category.id
+    {data.map((product, idx) => (
+    category_arr[product?.category?.name] = product?.category?.id
     
-  // ))}
+   ))}
 
   const shop_id = info?.id || 0;
 
