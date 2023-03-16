@@ -54,7 +54,7 @@ const Wishlist = () => {
                                                                     <div className="col-lg-9 col-md-9 col-sm-8">
                                                                         <div className="head-price mt-3">
                                                                             <h5 style={{ fontSize: "20px", padding: 20 }}>{item?.product?.name}</h5>
-                                                                            <h4 style={{ fontSize: "20px", padding: 20 }}>₹{item?.product?.normal_price}</h4>
+                                                                            <h4 style={{ fontSize: "20px", padding: 20 }}>₹{item?.product?.sale_price}</h4>
                                                                         </div>
                                                                         <div className="qunt-main">
                                                                             <div className="quantity mt-4">
@@ -105,7 +105,7 @@ const Wishlist = () => {
                                                                 {item?.product?.name}
                                                             </h5>
                                                             <span style={{ fontSize: "20px" }}>
-                                                                ₹{Number(item?.product?.normal_price)}
+                                                                ₹{Number(item?.product?.sale_price)}
                                                             </span>
                                                         </div>
                                                     </Fragment>

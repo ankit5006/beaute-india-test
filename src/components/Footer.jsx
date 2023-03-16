@@ -1,5 +1,12 @@
 import amazon from 'assets/pictures/Amazon Pay.png';
 import logo from 'assets/pictures/header-logo.png';
+import visacard from 'assets/images/visa.avif';
+import mastercard from 'assets/images/master.avif';
+import maestrocard from 'assets/images/Maestro.avif';
+import amexcard from 'assets/images/Amex.avif';
+import amazoncard from 'assets/images/Amazon-Pay.avif';
+import paytmcard from 'assets/images/paytm.avif';
+import upicard from 'assets/images/upi.avif';
 import fb from 'assets/pictures/fb-ft.svg';
 import insta from 'assets/pictures/insta-ft.svg';
 import master from 'assets/pictures/Mastercard.png';
@@ -32,21 +39,21 @@ function Footer() {
 	return (
 		<Fragment>
 			<div className="container-fluid footsection ">
-				<div className="main-footer-section">
+				<div className="main-footer-section py-4">
 					<div className="row  pt-5 pb-5 ">
 						<div className="col-lg-6 col-md-5">
-							<div className='footer-logo-section mt-3'>
+							<div className='footer-logo-section'>
 								<img src={logo} alt="" />
-								<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </p>
+								<p>Luxeoutlet has redefined conventional shopping experience with a brand portfolio that represents the pinnacle of the craftsmanship and unsurpassed quality further reinforcing its position as India's most desirable destination for world class brands. </p>
 							</div>
 
 						</div>
-						<div className="col-lg-4 col-md-4">
+						<div className="col-lg-3 col-md-4">
 							<div className="footdata">
 								<ul>
 									<li>
 										<div className="foothead mb-3">
-											BEAUTE INDIA
+											LUXE OUTLET
 										</div>
 									</li>
 									<Link to="/Whower"><li>Who we are ?</li></Link>
@@ -59,7 +66,7 @@ function Footer() {
 									<Link to="#"><li>FAQs</li></Link>
 								</ul>
 							</div>
-							<div className="child-foot">
+							{/* <div className="child-foot">
 								<p className="mt-4">Sign up for our Newsletter</p>
 								<form onSubmit={handleSubmit}>
 									<div className="foot-email-block mt-3 d-flex">
@@ -76,10 +83,10 @@ function Footer() {
 									<img src={netbanking} alt="" />
 									<img src={amazon} alt="" />
 								</div>
-							</div>
+							</div> */}
 
 						</div>
-						<div className="col-lg-2 col-md-3">
+						<div className="col-lg-3 col-md-3">
 
 
 							<div className="footdata">
@@ -97,7 +104,7 @@ function Footer() {
 									<Link to="#"><li>Luggage</li></Link>
 								</ul>
 							</div>
-							<div className="footdata">
+							{/* <div className="footdata">
 								<ul className="quick-links">
 									<li>
 										<div className="foothead mb-3 mt-5">
@@ -108,7 +115,20 @@ function Footer() {
 									<img src={wh} alt="" />&nbsp;&nbsp;
 									<img src={insta} alt="" />
 								</ul>
-							</div>
+							</div> */}
+						</div>
+					</div>
+
+					<div className="container">
+						<h6 className='text-center'>CHECKOUT SECURELY WITH</h6>
+						<div className="d-flex flex-wrap justify-content-center my-3 gap-3 img-card">
+							<img src={visacard} alt=""  />
+							<img src={mastercard} alt=""  />
+							<img src={maestrocard} alt=""  />
+							<img src={amexcard} alt=""  />
+							<img src={amazoncard} alt=""  />
+							<img src={paytmcard} alt=""  />
+							<img src={upicard} alt=""  />
 						</div>
 					</div>
 
