@@ -1,7 +1,7 @@
 import noImage from 'assets/images/no-image.jpg';
 import whishlist from 'assets/pictures/noun-love-4726271.svg';
 import cart from 'assets/pictures/Path-13479.svg';
-
+import { addToWishlist } from "components/wishlist";
 import { Fragment } from "react";
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
@@ -115,7 +115,12 @@ const ProductCardListView = ({ product }) => {
                        
                         <div className='d-flex ms-3 me-3'>
                             <button className='border-0 p-0 ms-3 me-3'>
-                                <img src={whishlist} alt="" style={{ height: 18 }} />
+                            <img
+                  src={whishlist}
+                  alt=""
+                  style={{ height: 18 }}
+                  onClick={() => addToWishlist(product?.id)}
+                />
                             </button>
                             <button className='border-0 p-0 ms-3 me-3'  onClick={addToCart}>
                                 <img src={cart} alt="" style={{ height: 18 }} />

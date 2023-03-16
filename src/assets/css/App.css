@@ -797,7 +797,7 @@ form h6 {
 .footer-logo-section img {
   width: 60%;
   height: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 .footdata ul li {
   list-style: none;
@@ -891,6 +891,10 @@ form h6 {
   /* background: url("/picture/Icon\ ionic-ios-arrow-down.svg"); */
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.img-card img{
+  width: 40px;
 }
 
 @media screen and (max-width: 1199px) {
