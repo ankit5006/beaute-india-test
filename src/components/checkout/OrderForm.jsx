@@ -125,8 +125,8 @@ const OrderForm = () => {
                                             </label>
                                         </div>
                                     </div>
-
-                                    <hr />
+                                    {(subTotal - discount) >800 && (subTotal - discount)<15000 ?
+                                    <>                                     <hr />
                                     <div className="radio-btn-section pe-3">
                                         <li>Cash on delivery</li>
 
@@ -140,7 +140,8 @@ const OrderForm = () => {
                                             </label>
 
                                         </div>
-                                    </div>
+                                    </div></>
+:""}
                                     <hr />
                                     {/* <div className="radio-btn-section pe-3">
                                             <li>UPIs</li>

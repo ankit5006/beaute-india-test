@@ -7,8 +7,10 @@ import EditAddress from './EditAddress';
 import { Modal, Button } from "react-bootstrap";
 import AddressForm from './AddressForm';
 import AddAddress from './AddAddress';
+import { $CombinedState } from 'redux';
+import $ from 'jquery';
 
-const AddressList = ({ idState }) => {
+const AddressList = ({ idState}) => {
     const { data } = AddressQuery()
     const [show, setShow] = useState(false);
     const [showAddressModal, setShowAddressModal] = useState(false);
@@ -20,6 +22,10 @@ const AddressList = ({ idState }) => {
     const handleEdit = (id) => {
         setId(id)
         setShow(true)
+    }
+    const selectAddress = (id)=>{
+
+        $('#selectAddress'+id).trigger('click')
     }
 
     return (
@@ -36,8 +42,11 @@ const AddressList = ({ idState }) => {
                             const item = JSON.parse(address?.address)
                             return (
                                 <Fragment key={idx}>
+                                    
                                     <div className='col-sm-4'>
+                                        <a href='#' type='button' onClick={()=>selectAddress(idx)} style={{textDecoration:"none",color:"#000"}} >
                                         <div className="card-address mt-4 mb-5">
+                                        <input name="plan" class="radio" id ={`selectAddress`+idx} type="radio"  value={address.id} ></input>
                                             <div className="card-address-edit">
                                                 <h5>{address?.title}</h5>
                                                 <button className='btn' onClick={() => handleEdit(address?.id)}>
@@ -54,6 +63,7 @@ const AddressList = ({ idState }) => {
                                                 </span>
                                             </div>
                                         </div>
+                                        </a>
                                     </div>
                                 </Fragment>
                             )

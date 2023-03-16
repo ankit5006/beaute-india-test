@@ -1,3 +1,4 @@
+import { getValue } from '@testing-library/user-event/dist/utils';
 import { AddressForm, AddressList, OrderForm, UserLoginForm } from 'components/checkout';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
@@ -7,6 +8,7 @@ import { Fragment, useState } from 'react';
 const Checkout = () => {
 	const { isUserLoggedIn } = useUser()
 	const [id, setId] = useState(0)
+
 
 	return (
 		<Fragment>
@@ -41,6 +43,7 @@ const Checkout = () => {
 
 							<AddressList idState={[id, setId]} />
 
+							
 							<div className="mb-2">
 								<div className="new2"></div>
 							</div>
