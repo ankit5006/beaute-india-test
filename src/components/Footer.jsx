@@ -130,6 +130,7 @@ function Footer() {
 							<img src={paytmcard} alt=""  />
 							<img src={upicard} alt=""  />
 						</div>
+						<h6 className='text-center mt-4'>2023. Powered by Avidus Interactive. All right reserved</h6>
 					</div>
 
 				</div>

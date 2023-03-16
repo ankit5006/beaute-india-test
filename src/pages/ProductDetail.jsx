@@ -203,7 +203,7 @@ const ProductDetail = () => {
               >
                 Description
               </button>
-              <button
+              {/* <button
                 className="nav-link "
                 id="nav-luxury-tab"
                 data-bs-toggle="tab"
@@ -214,7 +214,7 @@ const ProductDetail = () => {
                 aria-selected="true"
               >
                 Customer reviews
-              </button>
+              </button> */}
               <button
                 className="nav-link"
                 id="nav-prestige-tab"
