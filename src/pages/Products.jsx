@@ -230,7 +230,7 @@ const Products = () => {
       </div>
 
       <div className="container-fluid">
-        <Footer />
+        <Footer category={category_arr}/>
       </div>
     </Fragment>
   );

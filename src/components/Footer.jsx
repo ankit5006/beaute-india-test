@@ -15,7 +15,7 @@ import upi from 'assets/pictures/UPI.png';
 import visa from 'assets/pictures/Visa.png';
 // import logo from 'assets/pictures/header-logo.png';
 import wh from 'assets/pictures/wh-ft.svg';
-import { Link } from "react-router-dom";
+import { Link,useNavigate,useSearchParams } from "react-router-dom";
 
 
 
@@ -23,7 +23,9 @@ import { Fragment, useState } from "react";
 import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
 
-function Footer() {
+function Footer({category}) {
+	const navigate = useNavigate();
+	let [searchParams] = useSearchParams();
 	const [email, setEmail] = useState('')
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -35,6 +37,27 @@ function Footer() {
 				}
 			})
 	}
+	const handleNavigate = (e, key, value) => {
+		const Obj = {};
+		for (const [key, value] of searchParams) {
+		  if (key === "price") {
+			Object.assign(Obj, { price_min: value[0] });
+			Object.assign(Obj, { price_max: value[1] });
+		  } else {
+			Object.assign(Obj, { [key]: value });
+		  }
+		}
+		if (key === "price") {
+		  Object.assign(Obj, { price_min: value[0] });
+	
+		  Object.assign(Obj, { price_max: value[1] });
+		} else {
+		  Object.assign(Obj, { [key]: value });
+		}
+		// Object.assign(Obj, { [key]: value })
+		const query = new URLSearchParams(Obj).toString();
+		navigate(`/products?${query}`);
+	  };
 
 	return (
 		<Fragment>
@@ -96,12 +119,23 @@ function Footer() {
 											SHOP BY
 										</div>
 									</li>
-									<Link to="#"><li>Fragrance For Him</li></Link>
+									{ Object.keys(category).slice(0,6).map((name, idx) => (
+										<li
+										className="mt-3 ps-3 cat-filt category"
+										style={{ cursor: "pointer" }}
+										key={idx}
+										>
+										<a onClick={(e) => handleNavigate(e, "category", category[name])}>
+										{name}
+										</a>
+										</li>
+									))}
+									{/* <Link to="#"><li>Fragrance For Him</li></Link>
 									<Link to="#"><li>Fragrance For Her</li></Link>
 									<Link to="#"><li>Makeup</li></Link>
 									<Link to="#"><li>Body Care</li></Link>
 									<Link to="#"><li>Home Fragrance</li></Link>
-									<Link to="#"><li>Luggage</li></Link>
+									<Link to="#"><li>Luggage</li></Link> */}
 								</ul>
 							</div>
 							{/* <div className="footdata">
