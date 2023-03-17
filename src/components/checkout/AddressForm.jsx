@@ -20,6 +20,9 @@ const AddressForm = ({ editId, data, handleClose }) => {
         state: data_address?.state || '',
         city: data_address?.city || '',
         zip: data_address?.zip || '',
+        first_name: data?.first_name || '',
+        last_name: data?.last_name || '',
+
     })
 
     const onSubmit = (values) => {

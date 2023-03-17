@@ -55,7 +55,7 @@ const AddressList = ({ idState}) => {
                                             </div>
                                             <div className="mt-3">
                                                 <span>
-                                                    <h5>
+                                                    <h5>{address?.first_name} {address?.last_name}<br />
                                                         {item?.address}, <br />
                                                         {item?.city}, {item?.state}, <br />
                                                         {item?.country}, {item?.zip}
