@@ -61,7 +61,7 @@ const Sidebar = ({ shop_id, category }) => {
           </button>
         </Link>
 
-        {/* <ul className="nav flex-column">
+        <ul className="nav flex-column">
           <li>
             <a>
               <img src={downArrow} alt="" />
@@ -81,7 +81,7 @@ const Sidebar = ({ shop_id, category }) => {
               </a>
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
 
       <div className="brands-filter">
