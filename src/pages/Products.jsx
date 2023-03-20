@@ -164,7 +164,7 @@ const Products = () => {
                                   <Fragment>
                                     {currentTableData.map((product, idx) => (
                                       <Fragment key={idx}>
-                                        <ProductCard product={product} />
+                                        <ProductCard product={product} category={category_arr} />
                                       </Fragment>
                                     ))}
                                   </Fragment>
@@ -230,7 +230,9 @@ const Products = () => {
       </div>
 
       <div className="container-fluid">
-        <Footer category={category_arr}/>
+        {category_arr?
+        <Footer category={category_arr}/>:""
+        }
       </div>
     </Fragment>
   );

@@ -15,14 +15,21 @@ import { Link, useParams } from "react-router-dom";
 import { add } from "store/cart/actions";
 import notification from "utilities/notification";
 
-const ProductDetail = () => {
+const ProductDetail = ({category}) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { data: product } = ProductQuery(id);
   const { data: carts } = useSelector((state) => state.cart);
   const currentItem = carts.find((item) => item?.id === product?.id);
   const { data: products } = ProductQuery();
-  console.log(product)
+  const { data } = ProductQuery();
+  const category_arr= {}
+
+  {data.map((product, idx) => (
+    category_arr[product?.category?.name] = product?.category?.id
+    
+   ))}
+
   const addToCart = () => {
     const data = {
       id: product?.id || 0,
@@ -357,7 +364,7 @@ const ProductDetail = () => {
           )}
         </div>
       </div>
-      <Footer />
+      <Footer category={category_arr}/>
     </Fragment>
   );
 };

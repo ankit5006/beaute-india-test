@@ -24,6 +24,7 @@ import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
 
 function Footer({category}) {
+	console.log(category)
 	const navigate = useNavigate();
 	let [searchParams] = useSearchParams();
 	const [email, setEmail] = useState('')
@@ -119,7 +120,7 @@ function Footer({category}) {
 											SHOP BY
 										</div>
 									</li>
-									{ Object.keys(category).slice(0,6).map((name, idx) => (
+									{Object.keys(category).slice(0,6).map((name, idx) => (
 										<li
 										className="mt-3 ps-3 cat-filt category"
 										style={{ cursor: "pointer" }}
