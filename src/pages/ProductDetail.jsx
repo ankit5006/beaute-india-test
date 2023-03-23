@@ -341,7 +341,7 @@ const ProductDetail = ({category}) => {
         </section>
       </div>
 
-      <div className=" details-product mt-5 Related-product-section">
+      <div className="container details-product mt-5  Related-product-section">
         <h3 style={{ fontSize: "24px" }}>Related Products</h3>
         <Link className="text-dark text-decoration-none" to="/products">View more</Link>
       </div>
