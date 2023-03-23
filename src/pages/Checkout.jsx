@@ -4,11 +4,17 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { useUser } from 'hooks';
 import { Fragment, useState } from 'react';
+import { ProductQuery } from "components/products";
 
 const Checkout = () => {
 	const { isUserLoggedIn } = useUser()
 	const [id, setId] = useState(0)
-
+	const { data } = ProductQuery();
+  	const category_arr= {}
+	  {data.map((product, idx) => (
+		category_arr[product?.category?.name] = product?.category?.id
+		
+	   ))}
 
 	return (
 		<Fragment>
@@ -57,7 +63,7 @@ const Checkout = () => {
 					}
 				</div>
 			</div>
-			<Footer />
+			<Footer category={category_arr}/>
 		</Fragment>
 	)
 }

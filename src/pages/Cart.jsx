@@ -15,6 +15,12 @@ const Cart = () => {
 	const dispatch = useDispatch()
 	const { items, subTotal, discount, coupon, totalQuantity } = useCart()
 	const { data: products } = ProductQuery()
+	const { data } = ProductQuery();
+  	const category_arr= {}
+	  {data.map((product, idx) => (
+		category_arr[product?.category?.name] = product?.category?.id
+		
+	   ))}
 
 	useEffect(() => {
 		if (totalQuantity === 0) {
@@ -153,7 +159,7 @@ const Cart = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<Footer category={category_arr}/>
 		</Fragment>
 	)
 }

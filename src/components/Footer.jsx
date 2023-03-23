@@ -24,7 +24,6 @@ import { API_ENDPOINTS, request } from 'utilities';
 import notification from 'utilities/notification';
 
 function Footer({category}) {
-	console.log(category)
 	const navigate = useNavigate();
 	let [searchParams] = useSearchParams();
 	const [email, setEmail] = useState('')
