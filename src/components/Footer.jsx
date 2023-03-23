@@ -121,7 +121,7 @@ function Footer({category}) {
 									</li>
 									{Object.keys(category).slice(0,6).map((name, idx) => (
 										<li
-										className="mt-3 ps-3 cat-filt category"
+										className=" cat-filt category"
 										style={{ cursor: "pointer" }}
 										key={idx}
 										>

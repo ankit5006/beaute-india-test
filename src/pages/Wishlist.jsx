@@ -124,7 +124,7 @@ const Wishlist = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </Fragment>
     )
 }
