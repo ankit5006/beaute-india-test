@@ -29,27 +29,27 @@ const Products = () => {
   let [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
   const { data } = ProductQuery();
-  const category_arr= {}
+  const category_arr = {};
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return data.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage,data]);
+  }, [currentPage, data]);
 
-    {data.map((product, idx) => (
-    category_arr[product?.category?.name] = product?.category?.id
-    
-   ))}
+  {
+    data.map(
+      (product, idx) =>
+        (category_arr[product?.category?.name] = product?.category?.id)
+    );
+  }
 
   const shop_id = info?.id || 0;
 
   useEffect(() => {
-
     if (!isLoggedIn) {
       navigate("/");
     }
   }, [isLoggedIn]);
-  
 
   const handleNavigate = (e, key, value) => {
     const Obj = {};
@@ -72,8 +72,6 @@ const Products = () => {
     navigate(`/products?${query}`);
   };
 
-
-
   return (
     <Fragment>
       <Header />
@@ -85,7 +83,9 @@ const Products = () => {
           <div className="col-lg-2 col-md-3 sidebar-contect">
             <StickyBox offsetTop={10} offsetBottom={40}>
               <div className="" id="side">
-                {shop_id && <Sidebar shop_id={shop_id} category={category_arr}/>}
+                {shop_id && (
+                  <Sidebar shop_id={shop_id} category={category_arr} />
+                )}
               </div>
             </StickyBox>
           </div>
@@ -99,8 +99,9 @@ const Products = () => {
                   <div className="row sorting-section">
                     <div className="container  mt-5 mb-5">
                       <section id="tabs">
+
                         <div
-                          className="nav nav-tabs "
+                          className="nav nav-tabs d-none d-md-flex "
                           id="nav-tab"
                           role="tablist"
                         >
@@ -124,7 +125,9 @@ const Products = () => {
                             />
                           </div>
                           <div className="box2 ">
-                            <p>ITEMS PER PAGE: {currentTableData.length || 0}</p>
+                            <p>
+                              ITEMS PER PAGE: {currentTableData.length || 0}
+                            </p>
                           </div>
                           <div className="box3 ">
                             <select
@@ -151,6 +154,68 @@ const Products = () => {
                           </div>
                         </div>
 
+                       {/* Mobile Screen */}
+                        
+                        <div
+                          className="nav nav-tabs px-5 d-flex d-md-none "
+                          id="nav-tab"
+                          role="tablist"
+                        >
+                          <div className="d-flex">
+                            <p className="pe-2">VIEW AS</p>
+                            <img
+                              className="im-1 mx-1 pe-2"
+                              style={{ height: 20, cursor: "pointer" }}
+                              src={squareView}
+                              alt=""
+                              data-bs-toggle="tab"
+                              data-bs-target="#nav-home"
+                            />
+                            <img
+                              className="im-2"
+                              style={{ height: 20, cursor: "pointer" }}
+                              src={hrView}
+                              alt=""
+                              data-bs-toggle="tab"
+                              data-bs-target="#nav-prestige "
+                            />
+                          </div>
+                          <div className="box2 ">
+                            <p>
+                              ITEMS PER PAGE: {currentTableData.length || 0}
+                            </p>
+                          </div>
+                          
+                          
+                        </div>
+                  <div className="px-5 pt-3 d-flex d-md-none ">
+                        <div className="box3 ">
+                            <select
+                              className="form-select form-filter"
+                              aria-label="Default select example"
+                              onChange={(e) =>
+                                handleNavigate(e, "sort_by", e.target.value)
+                              }
+                              defaultChecked=""
+                            >
+                              <option>Default Sorting</option>
+                              <option value="popularity">Popularity</option>
+                              <option value="low">Price High to Low</option>
+                              <option value="high">Price Low to High</option>
+                            </select>
+                          </div>
+                        <div className="box4 ">
+                            <p>
+                              <span>
+                                <img src={filterImg} width="10%" alt="" />
+                                &nbsp;&nbsp;Filter
+                              </span>
+                            </p>
+                          </div>
+                          </div>
+
+
+
                         <div className="tab-content" id="nav-tabContent">
                           <div
                             className="tab-pane fade show active "
@@ -176,11 +241,10 @@ const Products = () => {
                               </div>
                               <div className="page-number">
                                 <Pagination
-                                  
                                   totalCount={data.length}
                                   currentPage={currentPage}
                                   pageSize={PageSize}
-                                  onPageChange={page => setCurrentPage(page)}
+                                  onPageChange={(page) => setCurrentPage(page)}
                                 />
                               </div>
                             </div>
@@ -196,7 +260,6 @@ const Products = () => {
                               {currentTableData.length > 0 ? (
                                 <Fragment>
                                   {currentTableData.map((product, idx) => (
-                                    
                                     <Fragment key={idx}>
                                       <ProductCardListView product={product} />
                                     </Fragment>
@@ -209,13 +272,12 @@ const Products = () => {
                               )}
                             </div>
                             <div className="page-number">
-                            <Pagination
-                    
-                                  totalCount={data.length}
-                                  currentPage={currentPage}
-                                  pageSize={PageSize}
-                                  onPageChange={page => setCurrentPage(page)}
-                                />
+                              <Pagination
+                                totalCount={data.length}
+                                currentPage={currentPage}
+                                pageSize={PageSize}
+                                onPageChange={(page) => setCurrentPage(page)}
+                              />
                             </div>
                           </div>
                         </div>
