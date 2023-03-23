@@ -95,7 +95,7 @@ const Cart = () => {
 											items.map((item, idx) => (
 												<Fragment key={idx}>
 													<div className="product-price">
-														<h5 style={{ fontSize: "20px" }}>{item?.model?.name}</h5>
+														<h5 style={{ fontSize: "20px" }}>{item?.model?.name}</h5>&nbsp;&nbsp;
 														<span style={{ fontSize: "20px" }}>₹{Number(item?.quantity) * Number(item?.price)}</span>
 													</div>
 												</Fragment>
