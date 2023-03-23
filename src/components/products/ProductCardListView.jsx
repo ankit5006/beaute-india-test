@@ -74,7 +74,7 @@ const ProductCardListView = ({ product }) => {
                 </div>
             </div> */}
 
-            <div className='row mt-5 pe-3 align-items-center' style={{ boxShadow:"0px 3px 6px #00000029" }}>
+            <div className='row mt-5 pe-3 main-list-view align-items-center' style={{ boxShadow:"0px 3px 6px #00000029" }}>
               <div className='col-sm-4'>
               <img
                         src={coverImage}
@@ -84,7 +84,7 @@ const ProductCardListView = ({ product }) => {
                         style={{ cursor: 'pointer' ,  width:"80%" }}
                     />
               </div>
-              <div className='col-sm-8'>
+              <div className='col-sm-8 listview-card'>
                 {console.log(product)}
               <h6 className="card-title  mb-2" >
                         <Link to={`/products/${product?.id}`}>
@@ -95,14 +95,14 @@ const ProductCardListView = ({ product }) => {
                    <div className=' mb-3 d-flex flex-row align-items-center'>
                    <h6  className='line-clamp'>
                     {product?.brand?.name} </h6>
-                    <h6  className='line-clamp ms-5'>
+                    <h6  className='line-clamp'>
                     {product?.size?.name} </h6>
                    </div>
                     <p  className='line-clamp mb-4 mt-4'>
                         {removeHtmlTags(product?.short_description)}
                     </p>         
-                   <div className='d-flex flex-row align-items-center'>
-                    <div className="price-buy pt-3 pb-3 me-5">
+                   <div className='  d-flex flex-row align-items-center'>
+                    <div className=" list-view-price price-buy pt-3 pb-3 me-5">
                     <Link to={`/products/${product?.id}`}>
                         <div className="price">₹ {product?.sale_price}</div>
                     </Link>

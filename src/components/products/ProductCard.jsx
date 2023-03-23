@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Fragment>
-      <div className="col-lg-3 col-md-6 col-sm-6 text-center">
+      <div className="col-lg-3 g-0 col-md-6 col-sm-6 text-center">
         <div className="card mt-3 mb-4">
           <img
             src={coverImage}

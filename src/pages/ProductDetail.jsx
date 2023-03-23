@@ -185,7 +185,7 @@ const ProductDetail = ({category}) => {
                     </Link>
                   </div> */}
                   <div className="upi-img m-4">
-                    <img src={upi} style={{}} alt="" />
+                    <img src={upi}  alt="" />
                   </div>
                 </div>
               </div>
@@ -194,8 +194,8 @@ const ProductDetail = ({category}) => {
         </div>
       </div>
 
-      <div className="container mt-5 mb-5">
-        <section id="tabs">
+      <div className="container  mt-5 mb-5">
+        <section id="tabs" className="details-product">
           <nav>
             <div className="nav nav-tabs" id="nav-tab" role="tablist">
               <button
@@ -341,9 +341,9 @@ const ProductDetail = ({category}) => {
         </section>
       </div>
 
-      <div className="container mt-5 Related-product-section">
+      <div className=" details-product mt-5 Related-product-section">
         <h3 style={{ fontSize: "24px" }}>Related Products</h3>
-        <Link to="/products">View more</Link>
+        <Link className="text-dark text-decoration-none" to="/products">View more</Link>
       </div>
       <div className="container">
         <div className="row text-center mt-2 mb-5">
