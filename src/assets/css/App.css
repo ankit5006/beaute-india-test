@@ -216,7 +216,7 @@ h6 {
     display: block;
     position: absolute;
     top: 39px;
-    right: 20px;
+    right: 30px;
     cursor: pointer;
   }
 
@@ -1676,6 +1676,48 @@ input[type="number"] {
   max-width: 1200px;
   display: block;
   margin: 0 auto;
+}
+
+@media screen and (max-width:767px) {
+  
+  .login-section h2{
+    padding: 5px 20px;
+  }
+
+  .new2{
+    margin: 10px 5px;
+  }
+
+  .address-section{
+
+    padding: 0 20px !important;
+
+  }
+
+  .address-section h3{
+    font-size: 18px;
+  }
+
+  .address-section button {
+    padding: 10px 20px;
+    font-size: 12px;
+}
+
+.address-edit-section{
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.card-address{
+  margin: 20px 20px  !important;
+}
+
+
+.payment-optoin-section .payment{
+  padding: 0 20px !important;
+}
+
+
 }
 
 @media screen and (max-width: 575px) {
